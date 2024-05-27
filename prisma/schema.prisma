@@ -1,0 +1,169 @@
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "debian-openssl-1.0.x"]
+}
+
+model User {
+    id            Int       @id @default(autoincrement())
+    name          String?
+    lastname      String?
+    email         String    @unique
+    code          String?
+    emailVerified Boolean?  @default(false)
+    tel           String?
+    password      String
+    newscheck     Boolean?
+    createdAt     DateTime? @default(now())
+    updatedAt     DateTime? @updatedAt
+    Siparis       Siparis[]
+    Role          Role      @default(USER)
+    Account       Account[]
+    Address       Address[]
+
+    @@index([email])
+}
+
+model Address {
+    id         Int     @id @default(autoincrement())
+    name       String?
+    adress     String?
+    state      String?
+    country    String?
+    zipcode    String?
+    category   String?
+    company    String?
+    companytva String?
+    User       User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId     Int?
+}
+
+model Product {
+    id            Int          @id @default(autoincrement())
+    name          String
+    slug          String       @unique
+    desc          String?
+    categoryId    Int?
+    Category      Category?    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    SubCategory   SubCategory? @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
+    subCategoryId Int?
+    price         Float
+    inprice       Float
+    indirimsize   String?
+    indirim       Boolean? // promotions
+    yeni          Boolean? // nouveautes
+    ilk           Boolean? // tendances
+    stock         Int?
+    images        Json?
+    onclick       Int?
+    archive       Boolean?
+    quill         Json?
+    sells         Int?
+    createdAt     DateTime?    @default(now())
+    updatedAt     DateTime?    @updatedAt
+
+    @@index([slug])
+}
+
+model SubCategory {
+    id         Int       @id @default(autoincrement())
+    index      Int?
+    name       String?
+    slug       String    @unique
+    desc       String?
+    keywords   String?
+    imageid    String?
+    imageurl   String?
+    archive    Boolean?
+    Product    Product[]
+    Category   Category? @relation(fields: [categoryId], references: [id])
+    categoryId Int?
+}
+
+model Category {
+    id          Int           @id @default(autoincrement())
+    index       Int?
+    name        String
+    slug        String        @unique
+    desc        String?
+    keywords    String?
+    imageid     String?
+    imageurl    String?
+    archive     Boolean?
+    SubCategory SubCategory[]
+    Product     Product[]
+
+    @@index([slug])
+}
+
+model Siparis {
+    id         Int       @id @default(autoincrement())
+    username   String?
+    User       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId     Int?
+    email      String?
+    billadress Json?
+    sendadress Json?
+    basket     Json?
+    amount     Float?
+    note       String?
+    sendmail   String?
+    shipping   Json?
+    status     String?
+    error      String?
+    kargono    String?
+    createdAt  DateTime? @default(now())
+    updatedAt  DateTime? @updatedAt
+}
+
+model Contact {
+    id       Int     @id @default(autoincrement())
+    name     String?
+    lastname String?
+    email    String?
+    konu     String?
+    not      String?
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+model Ayarlar {
+    id           Int     @id
+    desc         String?
+    keywords     String?
+    header       Json?
+    banner       Json?
+    bannerb      Json?
+    discountset  Json?
+    discountpage Json?
+    settings     Json?
+}
+
+model Account {
+    id                       String  @id @default(cuid())
+    userId                   Int     @unique
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String? @db.Text
+    access_token             String? @db.Text
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String? @db.Text
+    session_state            String?
+    refresh_token_expires_in Int?
+    User                     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+}
