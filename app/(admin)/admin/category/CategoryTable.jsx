@@ -23,12 +23,12 @@ const CategoryTable = (props) => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState(null);
-  const [svg, setSVG] = useState(null);
+
   const onDelete = async (data) => {
     Swal.fire({
-      title: name + " Adlı Çeşit Silinecektir! ",
+      title: data.name + " Adlı Kategori Silinecektir! ",
       showDenyButton: true,
-      confirmButtonText: "Arşiv",
+      confirmButtonText: "Sil",
       denyButtonText: "Hayır",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -70,14 +70,15 @@ const CategoryTable = (props) => {
       };
 
       const res = await setAllCategory("category", formData);
-      if (res === true)
-        Swal.fire({
+      if (res === true) {
+        await Swal.fire({
           icon: "success",
           title: "Başarıyla Eklendi",
           showConfirmButton: false,
           timer: 1500,
         });
-      else {
+        setImage(null);
+      } else {
         Swal.fire({
           icon: "error",
           title: JSON.stringify(res.message),
@@ -94,14 +95,15 @@ const CategoryTable = (props) => {
       imageurl: image?.secure_url || undefined,
     };
     const res = await putAllCategory("category", formData);
-    if (res === true)
+    if (res === true) {
       await Swal.fire({
         icon: "success",
         title: "Başarıyla Kaydedildi",
         showConfirmButton: false,
         timer: 1500,
       });
-    else {
+      setImage(null);
+    } else {
       Swal.fire({
         icon: "error",
         title: res.message,
@@ -190,8 +192,8 @@ const CategoryTable = (props) => {
                         />
                       </div>
                     </div>
-                    <div className="mb-2 flex gap-3 w-full">
-                      <div className="input-item mb-5 w-full">
+                    <div className="mb-2 flex flex-1">
+                      <div className="input-item mb-5 w-full h-12">
                         <CldUploadWidget
                           signatureEndpoint="/api/sign-cloudinary-params"
                           onSuccess={(result) => {
@@ -219,15 +221,6 @@ const CategoryTable = (props) => {
                             );
                           }}
                         </CldUploadWidget>
-                      </div>
-                      <div className="input-item mb-5 w-full">
-                        <div className="h-12 cursor-pointer">
-                          <button className="blue-btn inline-flex space-x-2 items-center">
-                            <span className="text-sm font-600 tracking-wide leading-7">
-                              SVG Yükle
-                            </span>
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -328,22 +321,14 @@ const CategoryTable = (props) => {
                     className="blue-btn inline-flex space-x-2 items-center"
                     onClick={handleOnClick}
                   >
-                    Resim Yükle
+                    İkon Resmi Yükle
                   </button>
                 );
               }}
             </CldUploadWidget>
           </div>
-          <div className="w-full sm:w-1/2 md:w-1/3 px-2 mb-12">
-            <div className=" h-12 cursor-pointer">
-              <button className="blue-btn inline-flex space-x-2 items-center">
-                <span className="text-sm font-600 tracking-wide leading-7">
-                  SVG Yükle
-                </span>
-              </button>
-            </div>
-          </div>
-          <div className="w-full sm:w-1/2 md:w-1/3 px-2 mb-12">
+
+          <div className="w-full sm:w-1/2 md:w-1/3 px-2 mb-12 ml-auto">
             <div className=" h-12 cursor-pointer">
               <button
                 className="yellow-btn inline-flex space-x-2 items-center"

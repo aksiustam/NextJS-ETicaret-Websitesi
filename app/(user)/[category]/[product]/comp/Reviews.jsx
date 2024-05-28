@@ -1,7 +1,7 @@
-import Star from "../../../../components/Helpers/icons/Star";
-import InputCom from "../../../../components/Helpers/InputCom";
-import LoaderStyleOne from "../../../../components/Helpers/Loaders/LoaderStyleOne";
-import StarRating from "../../../../components/Helpers/StarRating";
+import Star from "../../../components/Helpers/icons/Star";
+import InputCom from "../../../components/Helpers/InputCom";
+import LoaderStyleOne from "../../../components/Helpers/Loaders/LoaderStyleOne";
+import StarRating from "../../../components/Helpers/StarRating";
 
 export default function Reviews({
   comments,

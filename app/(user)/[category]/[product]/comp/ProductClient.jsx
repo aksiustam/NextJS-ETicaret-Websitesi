@@ -1,10 +1,10 @@
 "use client";
 import { useRef, useState } from "react";
-import data from "../../../../components/data/products.json";
-import BreadcrumbCom from "../../../../components/Common/BreadcrumbCom";
-import ProductCardStyleOne from "../../../../components/Helpers/Cards/ProductCardStyleOne";
-import DataIteration from "../../../../components/Helpers/DataIteration";
-import InputCom from "../../../../components/Helpers/InputCom";
+import data from "../../../components/data/products.json";
+import BreadcrumbCom from "../../../components/Common/BreadcrumbCom";
+import ProductCardStyleOne from "../../../components/Helpers/Cards/ProductCardStyleOne";
+import DataIteration from "../../../components/Helpers/DataIteration";
+import InputCom from "../../../components/Helpers/InputCom";
 
 import ProductView from "./ProductView";
 import Reviews from "./Reviews";

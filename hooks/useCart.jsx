@@ -13,9 +13,9 @@ const CartContext = createContext(null);
 export const CartContextProvider = (props) => {
   const [basket, setBasket] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     let getItem = localStorage.getItem("cart");
-    let getItemParse = JSON.parse(getItem);
+    let getItemParse = JSON.parse(getItem) || [];
     if (getItemParse) {
       localStorage.setItem("cart", JSON.stringify(getItemParse));
       setBasket(getItemParse);

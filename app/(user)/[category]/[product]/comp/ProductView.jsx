@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Star from "../../../../components/Helpers/icons/Star";
-import Selectbox from "../../../../components/Helpers/Selectbox";
+import Star from "../../../components/Helpers/icons/Star";
+import Selectbox from "../../../components/Helpers/Selectbox";
 
 export default function ProductView({ className, reportHandler }) {
   const productsImg = [

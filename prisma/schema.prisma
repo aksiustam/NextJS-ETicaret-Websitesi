@@ -54,9 +54,9 @@ model Product {
     price         Float
     inprice       Float
     indirimsize   String?
-    indirim       Boolean? // promotions
-    yeni          Boolean? // nouveautes
-    ilk           Boolean? // tendances
+    indirim       Boolean? // indirim
+    yeni          Boolean? // yeni
+    ilk           Boolean? // ilk
     stock         Int?
     images        Json?
     onclick       Int?

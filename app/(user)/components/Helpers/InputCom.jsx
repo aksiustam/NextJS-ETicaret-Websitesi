@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function InputCom({
   label,
   type,
@@ -18,16 +20,14 @@ export default function InputCom({
     <div className="input-com w-full h-full">
       {label && (
         <label
-          className={`input-label capitalize block  mb-2 ${labelClasses || ""}`}
+          className={`input-label capitalize block mb-2 ${labelClasses}`}
           htmlFor={name}
         >
           {label}{" "}
-          <span className="text-red-600">
-            {errors?.name && errors?.name?.message}
-          </span>
+          <span className="text-red-600">{errors?.[name]?.message}</span>
         </label>
       )}
-      <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative ">
+      <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative">
         <input
           placeholder={placeholder}
           value={value}
@@ -37,10 +37,10 @@ export default function InputCom({
           }`}
           type={type}
           id={name}
-          {...register(name, { required, pattern })}
+          {...(register ? register(name, { required, pattern }) : {})}
           {...rest}
         />
-        {children && children}
+        {children}
       </div>
     </div>
   );

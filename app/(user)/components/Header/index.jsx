@@ -1,14 +1,14 @@
 import Link from "next/link";
 import ThinBag from "../Helpers/icons/ThinBag";
-import Middlebar from "./Middlebar";
+
 import Navbar from "./Navbar";
 import UseCart from "@/hooks/useCart";
-
-export default function Header({ className, drawerAction, user }) {
+import Image from "next/image";
+export default function Header({ className, drawerAction, user, category }) {
   const { basket } = UseCart();
   return (
     <header className={` ${className || ""} header-section-wrapper relative`}>
-      <Middlebar user={user} basket={basket} />
+      {/* <Middlebar  /> */}
       <div className="quomodo-shop-drawer lg:hidden block w-full h-[60px] bg-white">
         <div className="w-full h-full flex justify-between items-center px-5">
           <div onClick={drawerAction}>
@@ -29,11 +29,11 @@ export default function Header({ className, drawerAction, user }) {
           </div>
           <div>
             <Link href="/">
-              <img
-                width="152"
-                height="36"
-                src={`/assets/images/logo.svg`}
+              <Image
+                src={"/assets/images/logo.svg"}
                 alt="logo"
+                width={152}
+                height={36}
               />
             </Link>
           </div>
@@ -46,12 +46,12 @@ export default function Header({ className, drawerAction, user }) {
             <span
               className={`w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-qyellow text-qblack`}
             >
-              {basket.length}
+              {basket?.length}
             </span>
           </div>
         </div>
       </div>
-      <Navbar type={1} />
+      <Navbar user={user} basket={basket} category={category} />
     </header>
   );
 }

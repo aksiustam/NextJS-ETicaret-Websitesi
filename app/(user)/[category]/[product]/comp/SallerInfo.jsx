@@ -1,6 +1,6 @@
-import ProductCardStyleOne from "../../../../components/Helpers/Cards/ProductCardStyleOne";
-import DataIteration from "../../../../components/Helpers/DataIteration";
-import Star from "../../../../components/Helpers/icons/Star";
+import ProductCardStyleOne from "../../../components/Helpers/Cards/ProductCardStyleOne";
+import DataIteration from "../../../components/Helpers/DataIteration";
+import Star from "../../../components/Helpers/icons/Star";
 
 export default function SallerInfo({ products }) {
   return (

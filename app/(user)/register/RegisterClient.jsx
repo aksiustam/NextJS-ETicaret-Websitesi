@@ -3,8 +3,34 @@
 import Link from "next/link";
 import Thumbnail from "./Thumbnail";
 import InputCom from "../components/Helpers/InputCom";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const RegisterClient = () => {
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    // try {
+    //   await Swal.fire({
+    //     icon: "success",
+    //     title: "Hoşgeldiniz",
+    //     showConfirmButton: false,
+    //     timer: 1200,
+    //   });
+    //   router.push("/");
+    //   router.refresh();
+    // } catch (error) {
+    //   setError(error);
+    // }
+  };
   return (
     <div className="login-page-wrapper w-full py-10">
       <div className="container-x mx-auto">
@@ -13,7 +39,7 @@ const RegisterClient = () => {
             <div className="w-full">
               <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
                 <h1 className="text-[34px] font-bold leading-[74px] text-qblack">
-                  Create Account
+                  Kayıt Ol
                 </h1>
                 <div className="shape -mt-6">
                   <svg
@@ -32,39 +58,51 @@ const RegisterClient = () => {
                   </svg>
                 </div>
               </div>
-              <div className="input-area">
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-5">
                   <InputCom
-                    placeholder="Demo Name"
-                    label="Frist Name*"
-                    name="fname"
+                    placeholder="Adınız"
+                    label="Adınız*"
+                    name="name"
                     type="text"
-                    inputClasses="h-[50px]"
+                    inputClasses="!h-[50px]"
+                    errors={errors}
+                    register={register}
+                    required="Adınızı Giriniz"
                   />
 
                   <InputCom
-                    placeholder="Demo Name"
-                    label="Last Name*"
-                    name="lname"
+                    placeholder="Soyadı"
+                    label="Soyadı*"
+                    name="lastname"
                     type="text"
-                    inputClasses="h-[50px]"
+                    inputClasses="!h-[50px]"
+                    errors={errors}
+                    register={register}
+                    required="Adınızı Giriniz"
                   />
                 </div>
                 <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-5">
                   <InputCom
-                    placeholder="Demo@gmail.com"
-                    label="Email Address*"
+                    placeholder="deneme@gmail.com"
+                    label="Email*"
                     name="email"
                     type="email"
-                    inputClasses="h-[50px]"
+                    inputClasses="!h-[50px]"
+                    errors={errors}
+                    register={register}
+                    required="E-mail Giriniz"
                   />
 
                   <InputCom
-                    placeholder="0213 *********"
-                    label="Phone*"
-                    name="phone"
+                    placeholder="0555 *********"
+                    label="Telefon*"
+                    name="tel"
                     type="text"
-                    inputClasses="h-[50px]"
+                    inputClasses="!h-[50px]"
+                    errors={errors}
+                    register={register}
+                    required="Telefon Giriniz"
                   />
                 </div>
 
@@ -95,11 +133,14 @@ const RegisterClient = () => {
 
                 <div className="input-item mb-5">
                   <InputCom
-                    placeholder="Your address Here"
-                    label="Address*"
-                    name="address"
+                    placeholder="Adress"
+                    label="Adress*"
+                    name="adress"
                     type="text"
-                    inputClasses="h-[50px]"
+                    inputClasses="!h-[50px]"
+                    errors={errors}
+                    register={register}
+                    required="Adres Giriniz"
                   />
                 </div>
                 <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-5">
@@ -162,32 +203,31 @@ const RegisterClient = () => {
                       onClick={() => console.log("HEY")}
                       className="text-base text-black"
                     >
-                      I agree all
-                      <span className="text-qblack">tarm and condition</span>
-                      in BigShop.
+                      <span className="text-qblack">Üyelik sözleşmesini</span>{" "}
+                      okudum, kabul ediyorum.
                     </span>
                   </div>
                 </div>
                 <div className="signin-area mb-3">
                   <div className="flex justify-center">
                     <button
-                      type="button"
+                      type="sumbit"
                       className="black-btn text-sm text-white w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
                     >
-                      <span>Create Account</span>
+                      <span>Kayıt Ol</span>
                     </button>
                   </div>
                 </div>
 
                 <div className="signup-area flex justify-center">
                   <p className="text-base text-qgraytwo font-normal">
-                    Alrady have an Account?
+                    Zaten Kayıtlı Mısınız?
                     <Link href="/login" className="ml-2 text-qblack">
-                      Log In
+                      Giriş Yap
                     </Link>
                   </p>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
           <div className="flex-1 lg:flex hidden transform scale-60 xl:scale-100   xl:justify-center">

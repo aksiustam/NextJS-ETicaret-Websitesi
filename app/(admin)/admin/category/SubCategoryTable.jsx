@@ -13,8 +13,9 @@ import InputCom from "@/app/(user)/components/Helpers/InputCom";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 const SubCategoryTable = (props) => {
-  const [cat, setCat] = useState(1);
   const category = props.category;
+  const [cat, setCat] = useState(category[0]?.id || null);
+
   const data = props.subcat.filter((item) => item?.categoryId === cat) || [];
 
   const [index, setIndex] = useState(1);
@@ -25,10 +26,10 @@ const SubCategoryTable = (props) => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState(null);
-  const [svg, setSVG] = useState(null);
+
   const onDelete = async (data) => {
     Swal.fire({
-      title: data.name + " Adlı AltKategori Silinecektir! ",
+      title: data.name + " Adlı Alt Kategori Silinecektir! ",
       showDenyButton: true,
       confirmButtonText: "Sil",
       denyButtonText: "Hayır",
@@ -72,15 +73,17 @@ const SubCategoryTable = (props) => {
         imageurl: image?.secure_url || undefined,
       };
 
+      console.log(formData);
       const res = await setAllCategory("subcat", formData);
-      if (res === true)
-        Swal.fire({
+      if (res === true) {
+        await Swal.fire({
           icon: "success",
           title: "Başarıyla Eklendi",
           showConfirmButton: false,
           timer: 1500,
         });
-      else {
+        setImage(null);
+      } else {
         Swal.fire({
           icon: "error",
           title: JSON.stringify(res.message),
@@ -97,14 +100,15 @@ const SubCategoryTable = (props) => {
       imageurl: image?.secure_url || undefined,
     };
     const res = await putAllCategory("subcat", formData);
-    if (res === true)
+    if (res === true) {
       await Swal.fire({
         icon: "success",
         title: "Başarıyla Kaydedildi",
         showConfirmButton: false,
         timer: 1500,
       });
-    else {
+      setImage(null);
+    } else {
       Swal.fire({
         icon: "error",
         title: res.message,
@@ -223,7 +227,7 @@ const SubCategoryTable = (props) => {
                       </div>
                     </div>
                     <div className="mb-2 flex gap-3 w-full">
-                      <div className="input-item mb-5 w-full">
+                      <div className="input-item mb-5 w-full h-12">
                         <CldUploadWidget
                           signatureEndpoint="/api/sign-cloudinary-params"
                           onSuccess={(result) => {
@@ -251,15 +255,6 @@ const SubCategoryTable = (props) => {
                             );
                           }}
                         </CldUploadWidget>
-                      </div>
-                      <div className="input-item mb-5 w-full">
-                        <div className="h-12 cursor-pointer">
-                          <button className="blue-btn inline-flex space-x-2 items-center">
-                            <span className="text-sm font-600 tracking-wide leading-7">
-                              SVG Yükle
-                            </span>
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -388,17 +383,9 @@ const SubCategoryTable = (props) => {
               }}
             </CldUploadWidget>
           </div>
-          <div className="w-full sm:w-1/2 md:w-1/3 px-2 mb-12">
-            <div className=" h-12 cursor-pointer">
-              <button className="blue-btn inline-flex space-x-2 items-center">
-                <span className="text-sm font-600 tracking-wide leading-7">
-                  SVG Yükle
-                </span>
-              </button>
-            </div>
-          </div>
-          <div className="w-full sm:w-1/2 md:w-1/3 px-2 mb-12">
-            <div className=" h-12 cursor-pointer">
+
+          <div className="w-full sm:w-1/2 md:w-1/3 px-2 mb-12 ml-auto">
+            <div className="h-12 cursor-pointer">
               <button
                 className="yellow-btn inline-flex space-x-2 items-center"
                 type="button"

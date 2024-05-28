@@ -1,31 +1,28 @@
 "use server";
 import prisma from "@/lib/prismadb";
 
-export default async function getAllCategory() {
+export default async function getCatSubCat(slug) {
   try {
-    const category = await prisma.category.findMany({
+    const category = await prisma.category.findUnique({
       where: {
+        slug: slug,
         archive: false,
       },
       include: {
         SubCategory: true,
       },
-      orderBy: {
-        index: "asc",
-      },
     });
-    const subcat = await prisma.SubCategory.findMany({
+
+    const subcat = await prisma.SubCategory.findUnique({
       where: {
+        slug: slug,
         archive: false,
-      },
-      orderBy: {
-        index: "asc",
       },
     });
 
     const data = {
-      category: category,
-      subcat: subcat,
+      category: category || null,
+      subcat: subcat || null,
     };
     return data;
   } catch (error) {

@@ -6,14 +6,22 @@ import Footer from "../Footer";
 import Header from "../Header";
 import AOSInit from "../../aos";
 
-export default function Layout({ children, childrenClasses, user }) {
+export default function Layout({ children, childrenClasses, user, category }) {
   const [drawer, setDrawer] = useState(false);
   return (
     <>
       <AOSInit />
-      <Drawer open={drawer} action={() => setDrawer(!drawer)} />
+      <Drawer
+        open={drawer}
+        action={() => setDrawer(!drawer)}
+        category={category}
+      />
       <div className="w-full overflow-x-hidden">
-        <Header drawerAction={() => setDrawer(!drawer)} user={user} />
+        <Header
+          drawerAction={() => setDrawer(!drawer)}
+          user={user}
+          category={category}
+        />
         <main className={`w-full  ${childrenClasses || "pt-[30px] pb-[60px]"}`}>
           {children && children}
         </main>
