@@ -129,19 +129,18 @@ const ContactClient = () => {
                   </span>
                   <div>
                     <h1 className="text-[22px] font-semibold text-qblack leading-[30px] mb-2">
-                      Address
+                      Adress
                     </h1>
                     <p className="text-[15px] text-qblack leading-[30px]">
-                      Erenler, Kazdağı Sk. No:9D, 42030 Karatay/Konya
+                      Erenler, Kazdağı Sk. 7bb, 42050 Karatay/Konya
                     </p>
                   </div>
                 </div>
-                <div className="w-full h-[206px] mt-5">
+                <div className="w-full h-[256px] mt-5">
                   <iframe
-                    title="newWork"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.94539481518!2d-74.26675559025064!3d40.69739290398433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1656755618576!5m2!1sen!2sbd"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d515.3514425106054!2d32.52208592467077!3d37.891575467365364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d08559bd9bcc71%3A0xa8f66feee457058e!2zS29ueWEgaGVkaXllbGlrIGvEsWzEscOnIGF2Y8SxIHZlIGRhxJ9jxLFsYXJhIMO2emVsIMOnYWvEsSBixLHDp2FrIGtvbGVrc2l5b25sdWsgw7xyw7xubGVyIHZlIHByb2Zlc3lvbmVsIGJpbGVtZSBixLHDp2Frw6fEsSBTZXJrYW4!5e0!3m2!1str!2str!4v1717141116248!5m2!1str!2str"
                     style={{ border: "0", width: "100%", height: "100%" }}
-                    allowFullScreen=""
+                    allowfullscreen=""
                     loading="lazy"
                   ></iframe>
                 </div>
@@ -184,6 +183,11 @@ const ContactClient = () => {
                     placeholder="deneme@gmail.com"
                     name="email"
                     inputClasses="!h-[50px]"
+                    pattern={{
+                      value:
+                        /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
+                      message: "Doğru Email Giriniz",
+                    }}
                   />
                 </div>
                 <div className="mb-4">

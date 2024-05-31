@@ -41,6 +41,7 @@ export default function ProductView({ className, product }) {
       });
     }
   };
+
   return (
     <div
       className={`product-view w-full lg:flex justify-between ${
@@ -58,9 +59,11 @@ export default function ProductView({ className, product }) {
               className="object-contain"
             />
 
-            <div className="w-[80px] h-[80px] rounded-full bg-qyellow text-qblack flex justify-center items-center text-xl font-medium absolute left-[30px] top-[30px]">
-              <span>-50%</span>
-            </div>
+            {product?.indirim === true && (
+              <div className="w-[80px] h-[80px] rounded-full bg-qyellow text-qblack flex justify-center items-center text-xl font-medium absolute left-[30px] top-[30px]">
+                <span>-{product?.indirimsize}%</span>
+              </div>
+            )}
           </div>
           <div className="flex gap-2 flex-wrap">
             {product?.images &&

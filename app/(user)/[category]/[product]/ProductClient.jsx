@@ -15,8 +15,11 @@ export default function ProductClient(props) {
             <div className="container-x mx-auto">
               <BreadcrumbCom
                 paths={[
-                  { name: "home", path: "/" },
-                  { name: "single product", path: "/single-product" },
+                  { name: "Anasayfa", path: "/" },
+                  {
+                    name: product?.name,
+                    path: `/${product?.Category?.slug}/${product?.slug}`,
+                  },
                 ]}
               />
             </div>

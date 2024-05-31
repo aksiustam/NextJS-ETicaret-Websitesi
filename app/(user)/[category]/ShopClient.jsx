@@ -26,7 +26,10 @@ export default function ShopClient({ allcategory, data, products }) {
       const maxPrice = filteredData?.maxprice || 500;
 
       return products.filter((product) => {
-        const categoryMatch = selectedCategories === product?.Category?.id;
+        const categoryMatch =
+          data?.category == null ||
+          selectedCategories === product?.Category?.id;
+
         const subcategoryMatch =
           selectedSubCategories.length === 0 ||
           selectedSubCategories.includes(product?.SubCategory?.id);
@@ -75,7 +78,15 @@ export default function ShopClient({ allcategory, data, products }) {
     <>
       <div className="products-page-wrapper w-full">
         <div className="container-x mx-auto">
-          <BreadcrumbCom />
+          <BreadcrumbCom
+            paths={[
+              { name: "Anasayfa", path: "/" },
+              {
+                name: data?.category?.name || "Alışveriş",
+                path: `/${data?.category?.slug || "alisveris"}`,
+              },
+            ]}
+          />
           <div className="w-full lg:flex lg:space-x-[30px]">
             <div className="lg:w-[270px]">
               <ProductsFilter

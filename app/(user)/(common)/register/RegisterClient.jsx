@@ -245,6 +245,11 @@ const RegisterClient = () => {
                       errors={errors}
                       register={register}
                       required="E-mail Giriniz"
+                      pattern={{
+                        value:
+                          /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
+                        message: "Doğru Email Giriniz",
+                      }}
                     />
 
                     <InputCom
@@ -268,6 +273,12 @@ const RegisterClient = () => {
                       errors={errors}
                       register={register}
                       required="Şifre Giriniz"
+                      minLength="6"
+                      pattern={{
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
+                        message:
+                          "Şifreniz 1 büyük 1 küçük harf ve sayıdan oluşmalıdır",
+                      }}
                     />
                   </div>
                   <div className="forgot-password-area mb-7">

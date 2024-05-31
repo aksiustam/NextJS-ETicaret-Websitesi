@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Empty from "./Empty";
 
 export default function EmptyCardError() {
@@ -11,17 +10,8 @@ export default function EmptyCardError() {
           </div>
           <div data-aos="fade-up" className="empty-content w-full">
             <h1 className="sm:text-xl text-base font-semibold text-center mb-5">
-              Empty! You don’t Cart any Products
+              Sepetiniz Boş!
             </h1>
-            <Link href="/">
-              <div className="flex justify-center w-full ">
-                <div className="w-[180px] h-[50px] ">
-                  <span type="button" className="yellow-btn">
-                    Back to Shop
-                  </span>
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </div>

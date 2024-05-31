@@ -232,6 +232,11 @@ export default function ProfilClient({ user }) {
                     name="email"
                     errors={errors}
                     register={register}
+                    pattern={{
+                      value:
+                        /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
+                      message: "Doğru Email Giriniz",
+                    }}
                   />
                 </div>
                 <div className="w-1/2 h-full">

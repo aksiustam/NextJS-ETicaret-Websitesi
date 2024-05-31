@@ -13,7 +13,7 @@ export default async function Home() {
   const allcategory = await getAllCategory();
   return (
     <>
-      <Banner settings={settings} />
+      <Banner settings={settings} allcategory={allcategory} />
       <ViewMoreTitle
         className="my-categories mb-[60px]"
         categoryTitle="Bıçakcı Serkan Ürünleri"

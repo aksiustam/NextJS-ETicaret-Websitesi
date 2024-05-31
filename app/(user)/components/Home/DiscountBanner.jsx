@@ -1,13 +1,13 @@
 export default function DiscountBanner() {
   return (
     <div
-      className={`discount-banner w-full h-[307px] bg-cover flex justify-center items-center `}
+      className={`discount-banner w-full h-[310px] bg-cover flex justify-center items-center `}
       style={{
-        background: `url(/assets/images/discount-banner-1.jpg) no-repeat`,
+        background: `url(/assets/images/alt-banner.png) no-repeat`,
         backgroundSize: "cover",
       }}
     >
-      <div className="container-x mx-auto">
+      <div className="container-x ml-auto mr-[35%]">
         <div className="best-services w-full  flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10">
           <div className="item">
             <div className="flex space-x-5 items-center">
@@ -21,48 +21,23 @@ export default function DiscountBanner() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M1 1H5.63636V24.1818H35"
+                      d="M1 1h4.636v23.182H35M8.728 35a3.09 3.09 0 1 0 0-6.182 3.09 3.09 0 0 0 0 6.182Zm23.179 0a3.09 3.09 0 1 0 0-6.182 3.09 3.09 0 0 0 0 6.182Z"
                       stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
                     />
                     <path
-                      d="M8.72763 35.0002C10.4347 35.0002 11.8185 33.6163 11.8185 31.9093C11.8185 30.2022 10.4347 28.8184 8.72763 28.8184C7.02057 28.8184 5.63672 30.2022 5.63672 31.9093C5.63672 33.6163 7.02057 35.0002 8.72763 35.0002Z"
+                      d="M34.998 1H11.816v17h23.182zM11.816 7.182h23.182"
                       stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                    <path
-                      d="M31.9073 35.0002C33.6144 35.0002 34.9982 33.6163 34.9982 31.9093C34.9982 30.2022 33.6144 28.8184 31.9073 28.8184C30.2003 28.8184 28.8164 30.2022 28.8164 31.9093C28.8164 33.6163 30.2003 35.0002 31.9073 35.0002Z"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                    <path
-                      d="M34.9982 1H11.8164V18H34.9982V1Z"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                    <path
-                      d="M11.8164 7.18164H34.9982"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
                     />
                   </svg>
                 </span>
               </div>
               <div>
-                <p className="text-black text-[15px] font-700 tracking-wide mb-1">
+                <p className="text-white text-[15px] font-700 tracking-wide mb-1">
                   Bedava Kargo
                 </p>
-                <p className="text-sm text-qgray">3000₺ ve üzerine bedava</p>
+                <p className="text-sm text-qblue-white">
+                  3000₺ ve üzerine bedava
+                </p>
               </div>
             </div>
           </div>
@@ -94,10 +69,12 @@ export default function DiscountBanner() {
                 </span>
               </div>
               <div>
-                <p className="text-black text-[15px] font-700 tracking-wide mb-1">
+                <p className="text-white text-[15px] font-700 tracking-wide mb-1">
                   Kolay İade
                 </p>
-                <p className="text-sm text-qgray">30 gün içinde iade etme</p>
+                <p className="text-sm text-qblue-white">
+                  30 gün içinde iade etme
+                </p>
               </div>
             </div>
           </div>
@@ -113,45 +90,17 @@ export default function DiscountBanner() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M7 13H5.5C2.95 13 1 11.05 1 8.5V1H7"
+                      d="M7 13H5.5C2.95 13 1 11.05 1 8.5V1h6m18 12h1.5c2.55 0 4.5-1.95 4.5-4.5V1h-6m-9 27v-6m0 0c-4.95 0-9-4.05-9-9V1h18v12c0 4.95-4.05 9-9 9Zm9 12H7c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6Z"
                       stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M25 13H26.5C29.05 13 31 11.05 31 8.5V1H25"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M16 28V22"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M16 22C11.05 22 7 17.95 7 13V1H25V13C25 17.95 20.95 22 16 22Z"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                    <path
-                      d="M25 34H7C7 30.7 9.7 28 13 28H19C22.3 28 25 30.7 25 34Z"
-                      stroke="#1868D5"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
                     />
                   </svg>
                 </span>
               </div>
               <div>
-                <p className="text-black text-[15px] font-700 tracking-wide mb-1">
+                <p className="text-white text-[15px] font-700 tracking-wide mb-1">
                   Gerçek Kalite
                 </p>
-                <p className="text-sm text-qgray">
+                <p className="text-sm text-qblue-white">
                   Müşterilerimizin %90&apos;ı Memnun
                 </p>
               </div>

@@ -193,6 +193,11 @@ const LoginClient = () => {
                       register={register}
                       required="E-mail Giriniz"
                       inputClasses="!h-[50px]"
+                      pattern={{
+                        value:
+                          /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
+                        message: "Doğru Email Giriniz",
+                      }}
                     />
                   </div>
                   <div className="input-item mb-5">
@@ -204,7 +209,12 @@ const LoginClient = () => {
                       register={register}
                       error={errors}
                       inputClasses="!h-[50px]"
-                      minLength="4"
+                      minLength="6"
+                      pattern={{
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
+                        message:
+                          "Şifreniz 1 büyük 1 küçük harf ve sayıdan oluşmalıdır",
+                      }}
                     />
                   </div>
                   <div className="forgot-password-area flex justify-between items-center mb-7">
