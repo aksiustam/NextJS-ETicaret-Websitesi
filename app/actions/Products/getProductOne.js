@@ -9,24 +9,8 @@ export default async function getProductOne(id) {
         archive: false,
       },
       include: {
-        ParcelGram: true,
-        Category: {
-          include: {
-            CategoryType: true,
-            SizeType: true,
-          },
-        },
-        Brand: true,
-        ProductColorSize: {
-          include: {
-            Color: true,
-            SizeStock: {
-              include: {
-                Size: true,
-              },
-            },
-          },
-        },
+        Category: true,
+        SubCategory: true,
       },
     });
 

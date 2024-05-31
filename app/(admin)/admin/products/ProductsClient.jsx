@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
 import Swal from "sweetalert2";
 import {
   Table,
@@ -33,6 +32,9 @@ import Link from "next/link";
 import Image from "next/image";
 import AdminSwitch from "../components/AdminSwitch";
 import { FaArrowRight } from "react-icons/fa";
+
+import updateSpecProducts from "@/app/actions/Products/updateSpecProducts";
+import delProduct from "@/app/actions/Products/delProduct";
 const ProductsClient = (props) => {
   const pdata = props.products || [];
   const [productData, setProductData] = useState(pdata);
@@ -67,7 +69,8 @@ const ProductsClient = (props) => {
       },
       sortToggleType: SortToggleType.AlternateWithReset,
       sortFns: {
-        ID: (array) => array.sort((a, b) => b.sells - a.sells),
+        SELLS: (array) => array.sort((a, b) => b.sells - a.sells),
+        CLICK: (array) => array.sort((a, b) => b.onclick - a.onclick),
         NAME: (array) => array.sort((a, b) => a?.name?.localeCompare(b?.name)),
         IND: (array) =>
           array.sort(
@@ -202,30 +205,26 @@ const ProductsClient = (props) => {
 
   const productDelete = async (item) => {
     Swal.fire({
-      title: item.name + " Adlı Ürün Arşivlenecek!! ",
+      title: item.name + " Adlı Ürün Silinecek!! ",
       showDenyButton: true,
-      confirmButtonText: "Arsiv",
+      confirmButtonText: "Sil",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const formData = { ...item, archive: true };
-
-        await axios
-          .post(`/api/product/${item.id}`, formData)
-          .then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "Başarıyla Arşivlendi",
-              showConfirmButton: false,
-              timer: 1000,
-            });
-            location.reload();
-          })
-          .catch((error) => {
-            Swal.fire({
-              icon: "error",
-              title: JSON.stringify(error.response.data),
-            });
+        const res = await delProduct(item?.id);
+        if (res === true) {
+          await Swal.fire({
+            icon: "success",
+            title: "Başarıyla Silindi",
+            showConfirmButton: false,
+            timer: 1500,
           });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: res.message,
+          });
+        }
+        router.refresh();
       }
     });
   };
@@ -241,23 +240,21 @@ const ProductsClient = (props) => {
     else {
       const filterdata = sendData.filter((item) => item !== undefined);
 
-      await axios
-        .post(`/api/product`, filterdata)
-        .then(async () => {
-          await Swal.fire({
-            icon: "success",
-            title: "Başarıyla Kaydedildi",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          location.reload();
-        })
-        .catch((error) => {
-          Swal.fire({
-            icon: "error",
-            title: JSON.stringify(error.response.data),
-          });
+      const res = await updateSpecProducts(filterdata);
+      if (res === true) {
+        await Swal.fire({
+          icon: "success",
+          title: "Başarıyla Kaydedildi",
+          showConfirmButton: false,
+          timer: 1500,
         });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: res.message,
+        });
+      }
+      router.refresh();
     }
   };
 
@@ -295,7 +292,7 @@ const ProductsClient = (props) => {
           <input
             type="text"
             placeholder="Ara"
-            className="w-full"
+            className="w-full h-12 bg-slate-200 px-4"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
@@ -320,17 +317,22 @@ const ProductsClient = (props) => {
                     </HeaderCellSort>
                     <HeaderCellSort sortKey="ILK">
                       <span className="text-sm text-gray-600 text-center">
-                        Trend Olanlar
+                        İlk Gösterilen / Trend Ürünler
                       </span>
                     </HeaderCellSort>
                     <HeaderCellSort sortKey="YENI">
                       <span className="text-sm text-gray-600 text-center">
-                        Yeni Gelenler
+                        Yeni Ürünler
                       </span>
                     </HeaderCellSort>
-                    <HeaderCellSort sortKey="ID">
+                    <HeaderCellSort sortKey="SELLS">
                       <span className="text-sm text-gray-600 text-center">
                         Satış Miktarı
+                      </span>
+                    </HeaderCellSort>
+                    <HeaderCellSort sortKey="CLICK">
+                      <span className="text-sm text-gray-600 text-center">
+                        Tıklama Miktarı
                       </span>
                     </HeaderCellSort>
                     <HeaderCellSort>
@@ -353,10 +355,10 @@ const ProductsClient = (props) => {
                         >
                           <Link href={`/admin/product/${item.id}`}>
                             <Image
-                              src={item?.imageurl}
+                              src={item?.images[0]?.imageurl}
                               alt="image"
-                              width={70}
-                              height={70}
+                              width={80}
+                              height={80}
                               className="object-contain"
                             />
                           </Link>
@@ -389,12 +391,12 @@ const ProductsClient = (props) => {
                             handleCheckChange={() => changeYeni(item?.id)}
                           />
                         </Cell>
-
                         <Cell>{item?.sells || 0}</Cell>
+                        <Cell>{item?.onclick || 0}</Cell>
                         <Cell>
                           <button
                             onClick={() => {
-                              router.push(`/admin/products/${item?.id}`);
+                              router.push(`/admin/product/${item?.id}`);
                             }}
                           >
                             <FaRegEdit size={26} color="green" />
@@ -412,7 +414,7 @@ const ProductsClient = (props) => {
             )}
           </Table>
         </div>
-        <div className="col-lg-12">
+        <div className="mt-4">
           <div className="flex items-center justify-between gap-4 mb-12">
             <span className="font-bold">Toplam Sayfa: {totalPage}</span>
             <div className="flex items-center justify-center gap-2 mr-12">

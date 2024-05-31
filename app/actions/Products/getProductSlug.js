@@ -1,7 +1,7 @@
 "use server";
 import prisma from "@/lib/prismadb";
 
-export default async function getProductOne(slug) {
+export default async function getProductSlug(slug) {
   try {
     const productsWithDetails = await prisma.product.findUnique({
       where: {
@@ -9,28 +9,12 @@ export default async function getProductOne(slug) {
         archive: false,
       },
       include: {
-        ParcelGram: true,
-        Category: {
-          include: {
-            CategoryType: true,
-            SizeType: true,
-          },
-        },
-        Brand: true,
-        ProductColorSize: {
-          include: {
-            Color: true,
-            SizeStock: {
-              include: {
-                Size: true,
-              },
-            },
-          },
-        },
+        Category: true,
+        SubCategory: true,
       },
     });
-
-    return productsWithDetails;
+    if (productsWithDetails) return productsWithDetails;
+    else return null;
   } catch (error) {
     throw new Error(error);
   }

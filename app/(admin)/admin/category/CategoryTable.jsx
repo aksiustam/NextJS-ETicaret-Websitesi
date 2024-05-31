@@ -37,7 +37,7 @@ const CategoryTable = (props) => {
         if (res === true)
           Swal.fire({
             icon: "success",
-            title: "Başarıyla Arşivlendi",
+            title: "Başarıyla Silindi",
             showConfirmButton: false,
             timer: 1500,
           });

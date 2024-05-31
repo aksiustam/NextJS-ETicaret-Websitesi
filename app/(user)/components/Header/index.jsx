@@ -2,22 +2,23 @@ import Link from "next/link";
 import ThinBag from "../Helpers/icons/ThinBag";
 
 import Navbar from "./Navbar";
-import UseCart from "@/hooks/useCart";
+
 import Image from "next/image";
+import UseCart from "@/hooks/useCart";
 export default function Header({ className, drawerAction, user, category }) {
   const { basket } = UseCart();
   return (
     <header className={` ${className || ""} header-section-wrapper relative`}>
       {/* <Middlebar  /> */}
-      <div className="quomodo-shop-drawer lg:hidden block w-full h-[60px] bg-white">
+      <div className="quomodo-shop-drawer lg:hidden block w-full h-[120px] bg-black">
         <div className="w-full h-full flex justify-between items-center px-5">
           <div onClick={drawerAction}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-12 w-12"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="white"
               strokeWidth="2"
             >
               <path
@@ -27,17 +28,17 @@ export default function Header({ className, drawerAction, user, category }) {
               />
             </svg>
           </div>
-          <div>
+          <div className="relative">
             <Link href="/">
               <Image
                 src={"/assets/images/logo.svg"}
                 alt="logo"
-                width={152}
-                height={36}
+                width={168}
+                height={55}
               />
             </Link>
           </div>
-          <div className="cart relative cursor-pointer">
+          <div className="cart relative cursor-pointer mr-4">
             <Link href="/sepet">
               <span>
                 <ThinBag />

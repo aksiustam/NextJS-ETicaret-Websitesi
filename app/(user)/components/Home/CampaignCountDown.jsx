@@ -2,8 +2,9 @@
 import Link from "next/link";
 import CountDown from "../Helpers/CountDown";
 
-export default function CampaignCountDown({ className, lastDate }) {
-  const { showDate, showHour, showMinute, showSecound } = CountDown(lastDate);
+export default function CampaignCountDown({ className, settings }) {
+  const data = settings?.discountpage;
+  const { showDate, showHour, showMinute, showSecound } = CountDown(data.date);
 
   return (
     <div>
@@ -14,11 +15,11 @@ export default function CampaignCountDown({ className, lastDate }) {
               data-aos="fade-right"
               className="campaign-countdown h-full w-full mb-5 lg:mb-0"
               style={{
-                background: `url(/assets/images/campaign-cover-countdown-2.jpg) no-repeat`,
+                background: `url(${data?.discres?.imageurl}) no-repeat`,
                 backgroundSize: "cover",
               }}
             >
-              <Link href="/flash-sale">
+              <Link href={data?.buttonUrl}>
                 <div className="w-full xl:p-12 p-5">
                   <div className="countdown-wrapper w-full flex space-x-[23px] mb-10">
                     <div className="countdown-item">
@@ -27,8 +28,8 @@ export default function CampaignCountDown({ className, lastDate }) {
                           {showDate}
                         </span>
                       </div>
-                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8">
-                        Days
+                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8 text-white">
+                        Gün
                       </p>
                     </div>
                     <div className="countdown-item">
@@ -37,8 +38,8 @@ export default function CampaignCountDown({ className, lastDate }) {
                           {showHour}
                         </span>
                       </div>
-                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8">
-                        Hours
+                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8 text-white">
+                        Saat
                       </p>
                     </div>
                     <div className="countdown-item">
@@ -47,8 +48,8 @@ export default function CampaignCountDown({ className, lastDate }) {
                           {showMinute}
                         </span>
                       </div>
-                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8">
-                        Minutes
+                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8 text-white">
+                        Dakika
                       </p>
                     </div>
                     <div className="countdown-item">
@@ -57,24 +58,23 @@ export default function CampaignCountDown({ className, lastDate }) {
                           {showSecound}
                         </span>
                       </div>
-                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8">
-                        Seconds
+                      <p className="sm:text-[18px] text-[12px] font-500 text-center leading-8 text-white">
+                        Saniye
                       </p>
                     </div>
                   </div>
                   <div className="countdown-title mb-4">
-                    <h1 className="text-[44px] text-qblack font-600">
-                      WOO! Flash Sale
-                    </h1>
-                    <p className="text-[18px] text-qblack leading-7">
-                      You get into the 2k+ best Products in Flash offer with
-                      <br /> a special-shaped sofa for sale.
+                    <h4 className="text-[44px] text-white font-600">
+                      {data?.bannerUst}
+                    </h4>
+                    <p className="text-[18px] text-white leading-7">
+                      {data?.bannerAlt}
                     </p>
                   </div>
                   <div className="w-[119px] h-10">
                     <div className="yellow-btn inline-flex space-x-2 items-center">
                       <span className="text-sm font-600 tracking-wide leading-7">
-                        Shop Now
+                        {data?.buttonName}
                       </span>
                       <span>
                         <svg

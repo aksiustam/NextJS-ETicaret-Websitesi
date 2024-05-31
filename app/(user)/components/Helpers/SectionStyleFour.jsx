@@ -1,38 +1,45 @@
-import ProductCardRowStyleTwo from "./Cards/ProductCardRowStyleTwo";
-import DataIteration from "./DataIteration";
+import ProductCardRow from "./Cards/ProductCardRow";
 import ViewMoreTitle from "./ViewMoreTitle";
 
 export default function SectionStyleFour({
   className,
+  products,
   sectionTitle,
-  seeMoreUrl,
-  products = [],
 }) {
   return (
     <div className={`section-style-one ${className || ""}`}>
-      <ViewMoreTitle categoryTitle={sectionTitle} seeMoreUrl={seeMoreUrl}>
+      <ViewMoreTitle categoryTitle={sectionTitle}>
         <div className="products-section w-full">
           <div className="grid lg:grid-cols-3 grid-cols-1 xl:gap-[30px] lg:gap-5">
             <div className="item-col">
-              <DataIteration datas={products} startLength={0} endLength={4}>
-                {({ datas }) => (
-                  <ProductCardRowStyleTwo key={datas.id} datas={datas} />
-                )}
-              </DataIteration>
+              {products
+                .sort((a, b) => b.sells - a.sells)
+                .slice(0, 4)
+                .map((item) => (
+                  <div data-aos="fade-up" key={item.id}>
+                    <ProductCardRow datas={item} />
+                  </div>
+                ))}
             </div>
             <div className="item-col">
-              <DataIteration datas={products} startLength={4} endLength={8}>
-                {({ datas }) => (
-                  <ProductCardRowStyleTwo key={datas.id} datas={datas} />
-                )}
-              </DataIteration>
+              {products
+                .sort((a, b) => b.sells - a.sells)
+                .slice(4, 8)
+                .map((item) => (
+                  <div data-aos="fade-up" key={item.id}>
+                    <ProductCardRow datas={item} />
+                  </div>
+                ))}
             </div>
             <div className="item-col">
-              <DataIteration datas={products} startLength={8} endLength={12}>
-                {({ datas }) => (
-                  <ProductCardRowStyleTwo key={datas.id} datas={datas} />
-                )}
-              </DataIteration>
+              {products
+                .sort((a, b) => b.sells - a.sells)
+                .slice(8, 12)
+                .map((item) => (
+                  <div data-aos="fade-up" key={item.id}>
+                    <ProductCardRow datas={item} />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

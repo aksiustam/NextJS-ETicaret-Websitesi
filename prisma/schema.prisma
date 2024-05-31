@@ -55,8 +55,8 @@ model Product {
     inprice       Float
     indirimsize   String?
     indirim       Boolean? // indirim
-    yeni          Boolean? // yeni
     ilk           Boolean? // ilk
+    yeni          Boolean? // yeni
     stock         Int?
     images        Json?
     onclick       Int?
@@ -138,9 +138,7 @@ model Ayarlar {
     id           Int     @id
     desc         String?
     keywords     String?
-    header       Json?
     banner       Json?
-    bannerb      Json?
     discountset  Json?
     discountpage Json?
     settings     Json?

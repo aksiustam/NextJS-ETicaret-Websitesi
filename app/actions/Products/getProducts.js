@@ -8,7 +8,8 @@ export default async function getProducts() {
         archive: false,
       },
       include: {
-        Category: {},
+        Category: true,
+        SubCategory: true,
       },
     });
 

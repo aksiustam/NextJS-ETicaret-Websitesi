@@ -1,7 +1,12 @@
 import React from "react";
+import Dashboard from "./Dashboard";
+import getProducts from "@/app/actions/Products/getProducts";
+export const dynamic = "force-dynamic";
+const page = async () => {
+  const products = await getProducts();
+  const siparis = [];
 
-const page = () => {
-  return <div>ADMİNNN</div>;
+  return <Dashboard products={products} siparis={siparis} />;
 };
 
 export default page;

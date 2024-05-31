@@ -6,7 +6,7 @@ import Cart from "../Cart";
 import ThinBag from "../Helpers/icons/ThinBag";
 import ThinPeople from "../Helpers/icons/ThinPeople";
 import Image from "next/image";
-
+import { MdAdminPanelSettings } from "react-icons/md";
 export default function Navbar({ user, basket, category }) {
   const [categoryToggle, setToggle] = useState(false);
   const [elementsSize, setSize] = useState("0px");
@@ -28,18 +28,18 @@ export default function Navbar({ user, basket, category }) {
 
   return (
     <div
-      className={`nav-widget-wrapper w-full  h-[70px] relative bg-qyellow z-30 quomodo-shop-nav-bar lg:block hidden`}
+      className={`nav-widget-wrapper w-full  h-[140px] border-b-8 border-b-qyellow relative bg-black quomodo-shop-nav-bar lg:block hidden`}
     >
       <div className="container-x mx-auto h-full">
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-between items-center">
-            <div className="category w-[270px] h-[53px] bg-white px-5 rounded-t-md mt-[6px] relative">
+            <div className="category w-[270px] h-[53px] bg-qyellow px-5 rounded-t-md mt-[6px] relative z-40">
               <button
                 onClick={handler}
                 type="button"
                 className="w-full h-full flex justify-between items-center"
               >
-                <div className="flex space-x-3 items-center">
+                <div className="flex space-x-3 items-center ">
                   <span>
                     <svg
                       className="fill-current"
@@ -133,13 +133,13 @@ export default function Navbar({ user, basket, category }) {
                 </ul>
               </div>
             </div>
-            <div className="w-[270px]  flex items-center justify-center h-full bg-white rounded-3xl">
+            <div className="w-[220px] flex items-center justify-center h-full bg-black relative">
               <Link href="/">
                 <Image
                   src={`/assets/images/logo.svg`}
                   alt="logo"
-                  width={152}
-                  height={36}
+                  fill
+                  className=" object-contain"
                 />
               </Link>
             </div>
@@ -160,12 +160,21 @@ export default function Navbar({ user, basket, category }) {
                 <Cart />
               </div>
               <div>
-                <Link href={user !== null ? "/profil" : "/login"}>
+                <Link href={user !== null ? "/hesabim" : "/login"}>
                   <span>
                     <ThinPeople />
                   </span>
                 </Link>
               </div>
+              {user !== null && user.Role === "ADMIN" && (
+                <div>
+                  <Link href={"/admin"}>
+                    <span>
+                      <MdAdminPanelSettings color="white" size={26} />
+                    </span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

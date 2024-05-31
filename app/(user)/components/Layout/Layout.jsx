@@ -16,7 +16,7 @@ export default function Layout({ children, childrenClasses, user, category }) {
         action={() => setDrawer(!drawer)}
         category={category}
       />
-      <div className="w-full overflow-x-hidden">
+      <div className="w-full h-full overflow-hidden">
         <Header
           drawerAction={() => setDrawer(!drawer)}
           user={user}
@@ -25,7 +25,7 @@ export default function Layout({ children, childrenClasses, user, category }) {
         <main className={`w-full  ${childrenClasses || "pt-[30px] pb-[60px]"}`}>
           {children && children}
         </main>
-        <DiscountBanner type={3} />
+        <DiscountBanner />
         <Footer />
       </div>
     </>

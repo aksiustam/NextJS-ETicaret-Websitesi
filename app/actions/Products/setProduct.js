@@ -4,42 +4,24 @@ import slugify from "slugify";
 
 export default async function setProduct(data) {
   try {
-    const category = await prisma.category.findFirst({
-      where: {
-        name: data.category,
-      },
-    });
-
     const CharacterMap = {
-      É: "E",
-      é: "e",
-      À: "A",
-      à: "a",
-      È: "E",
-      è: "e",
-      Ù: "U",
-      ù: "u",
-      Â: "A",
-      â: "a",
-      Ê: "E",
-      ê: "e",
-      Î: "I",
-      î: "i",
-      Ô: "O",
-      ô: "o",
-      Û: "U",
-      û: "u",
-      Ë: "E",
-      ë: "e",
       Ç: "C",
+      Ş: "S",
+      Ğ: "G",
+      İ: "I",
+      Ö: "O",
+      Ü: "U",
       ç: "c",
-      œ: "oe",
-      æ: "ae",
+      ş: "s",
+      ğ: "g",
+      ı: "i",
+      ö: "o",
+      ü: "u",
     };
 
     const slug = slugify(data.name, {
       lower: true,
-      replacement: (char) => CharacterMap[char] || (char === " " ? "-" : char),
+      replacement: (char) => CharacterMap[char] || (char === " " ? "" : char),
       remove: /[*+~.()'"!:@]/g,
     });
 
@@ -50,28 +32,29 @@ export default async function setProduct(data) {
     });
 
     if (prdct) return { message: "Bu ürünün aynısından var " };
+
     await prisma.product.create({
       data: {
         name: data.name,
         slug: slug,
         desc: data.desc,
-        gender: data.gender,
         Category: {
-          connect: category,
+          connect: { id: parseInt(data.kategori) },
         },
-        Brand: {
-          connect: data.brand.map((item) => {
-            return { id: item.value };
-          }),
-        },
+        SubCategory: data.altkategori
+          ? {
+              connect: { id: parseInt(data.altkategori) },
+            }
+          : null,
         price: parseFloat(data.price),
         inprice: parseFloat(data.inprice),
         indirim: false,
         yeni: false,
         ilk: false,
-        ofg: false,
-        bio: false,
         onclick: 0,
+        sells: 0,
+        stock: parseInt(data.stock),
+        images: data.Image,
         archive: false,
         quill: data.quill,
       },
