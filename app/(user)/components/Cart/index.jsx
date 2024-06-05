@@ -21,7 +21,7 @@ export default function Cart() {
     <>
       <div
         style={{ boxShadow: " 0px 15px 50px 0px rgba(0, 0, 0, 0.14)" }}
-        className={`w-[300px] bg-white border-t-[3px] absolute -right-[45px] top-11 z-50 hidden group-hover:block cart-wrappwer transition-all duration-500 delay-200`}
+        className={`w-[300px] bg-white border-t-[3px] absolute -right-[45px] top-11 z-50 hidden group-hover:block cart-wrappwer transition  duration-[200] delay-1000 hover:delay-0`}
       >
         <div className="w-full h-full">
           <div className="product-items max-h-[310px] overflow-y-scroll">
@@ -35,6 +35,7 @@ export default function Cart() {
                         alt={item?.name}
                         width={100}
                         height={100}
+                        loading="eager"
                         className="w-full h-full object-contain"
                       />
                     </div>

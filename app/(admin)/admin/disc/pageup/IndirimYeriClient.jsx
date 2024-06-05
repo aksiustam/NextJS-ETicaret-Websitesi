@@ -30,7 +30,7 @@ const IndirimYeriClient = (props) => {
   const [image, setImage] = useState(null);
   const router = useRouter();
   const onSubmit = async (data) => {
-    let formData = { ...data };
+    let formData = { ...data, discres: null };
     if (image !== null) {
       formData = {
         ...formData,

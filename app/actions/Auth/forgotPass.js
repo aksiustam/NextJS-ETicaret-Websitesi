@@ -1,6 +1,6 @@
 "use server";
 import prisma from "@/lib/prismadb";
-import nodemailer from "nodemailer";
+
 import bcrypt from "bcryptjs";
 
 function generatePasswordCode() {
@@ -58,6 +58,7 @@ export default async function forgotPass(email) {
         where: { email: email },
         data: { password: encryptedPassword },
       });
+      const nodemailer = await import("nodemailer");
 
       let transporter = nodemailer.createTransport({
         host: "mail.nilrio.com",

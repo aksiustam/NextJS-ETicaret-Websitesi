@@ -16,6 +16,7 @@ export default function ProductList({ className, datas }) {
               alt={datas?.name}
               width={150}
               height={150}
+              loading="eager"
               className="w-full h-full object-cover"
             />
           </div>

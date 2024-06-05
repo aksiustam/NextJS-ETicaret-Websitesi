@@ -1,9 +1,16 @@
+"use client";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 export default function Drawer({ className, open, action, category }) {
   const cat = category.category;
   const [tab, setTab] = useState("category");
+  const [search, setSearch] = useState("");
+  const router = useRouter();
+  const SearchComp = () => {
+    router.push(`/ara/${search}`);
+  };
   return (
     <>
       <div
@@ -55,10 +62,14 @@ export default function Drawer({ className, open, action, category }) {
                 <input
                   type="text"
                   className="w-full text-xs h-full focus:outline-none foucus:ring-0 placeholder:text-qgraytwo pl-2.5 "
-                  placeholder="Search Product..."
+                  placeholder="Ürün Ara..."
+                  onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
-              <div className="w-[40px] h-full bg-qyellow flex justify-center items-center">
+              <div
+                className="w-[40px] h-full bg-qyellow flex justify-center items-center"
+                onClick={SearchComp}
+              >
                 <span>
                   <svg
                     width="23"
@@ -112,13 +123,14 @@ export default function Drawer({ className, open, action, category }) {
                                 alt="Kategori"
                                 width={50}
                                 height={50}
+                                loading="eager"
                                 className="w-5 h-5 object-contain"
                               />
                             )}
                           </span>
                           <span className="text-xs font-400">{item?.name}</span>
                         </div>
-                        <div>
+                        {/* <div>
                           <span>
                             <svg
                               className="fill-current"
@@ -144,7 +156,7 @@ export default function Drawer({ className, open, action, category }) {
                               />
                             </svg>
                           </span>
-                        </div>
+                        </div> */}
                       </div>
                     </Link>
                   </li>
@@ -160,7 +172,7 @@ export default function Drawer({ className, open, action, category }) {
                       <div className="flex items-center space-x-6">
                         <span className="text-sm font-400">Anasayfa</span>
                       </div>
-                      <div>
+                      {/* <div>
                         <span>
                           <svg
                             width="6"
@@ -187,7 +199,7 @@ export default function Drawer({ className, open, action, category }) {
                             />
                           </svg>
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                   </Link>
                 </li>
@@ -197,7 +209,7 @@ export default function Drawer({ className, open, action, category }) {
                       <div className="flex items-center space-x-6">
                         <span className="text-sm font-400">Hakkımızda</span>
                       </div>
-                      <div>
+                      {/* <div>
                         <span>
                           <svg
                             width="6"
@@ -224,7 +236,7 @@ export default function Drawer({ className, open, action, category }) {
                             />
                           </svg>
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                   </Link>
                 </li>
@@ -234,7 +246,7 @@ export default function Drawer({ className, open, action, category }) {
                       <div className="flex items-center space-x-6">
                         <span className="text-sm font-400">İletişim</span>
                       </div>
-                      <div>
+                      {/* <div>
                         <span>
                           <svg
                             width="6"
@@ -261,44 +273,7 @@ export default function Drawer({ className, open, action, category }) {
                             />
                           </svg>
                         </span>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-                <li className="category-item">
-                  <Link href="/">
-                    <div className=" flex justify-between items-center px-5 h-12 bg-white hover:bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
-                      <div className="flex items-center space-x-6">
-                        <span className="text-sm font-400">Kurumsal</span>
-                      </div>
-                      <div>
-                        <span>
-                          <svg
-                            width="6"
-                            height="9"
-                            viewBox="0 0 6 9"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              x="1.49805"
-                              y="0.818359"
-                              width="5.78538"
-                              height="1.28564"
-                              transform="rotate(45 1.49805 0.818359)"
-                              fill="#1D1D1D"
-                            />
-                            <rect
-                              x="5.58984"
-                              y="4.90918"
-                              width="5.78538"
-                              height="1.28564"
-                              transform="rotate(135 5.58984 4.90918)"
-                              fill="#1D1D1D"
-                            />
-                          </svg>
-                        </span>
-                      </div>
+                      </div> */}
                     </div>
                   </Link>
                 </li>

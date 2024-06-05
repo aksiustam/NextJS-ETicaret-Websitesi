@@ -2,12 +2,14 @@ import { useState } from "react";
 import Image from "next/image";
 import UseCart from "@/hooks/useCart";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 export default function ProductView({ className, product }) {
   const [src, setSrc] = useState(product?.images[0]?.imageurl);
 
   const [quantity, setQuantity] = useState(1);
   const { addToBasket } = UseCart();
+  const router = useRouter();
   const addBasket = () => {
     if (!product) {
       return;
@@ -29,8 +31,16 @@ export default function ProductView({ className, product }) {
       Swal.fire({
         icon: "success",
         title: "Sepete Eklendi",
-        showConfirmButton: false,
-        timer: 1500,
+        text: `${product.name} adlı ürün sepetinize eklendi.`,
+        showDenyButton: true,
+        denyButtonText: "Sepete Git",
+        showConfirmButton: true,
+        confirmButtonText: "Alışverişe Devam",
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.isDenied) {
+          router.push("/sepet");
+        }
       });
     } else {
       Swal.fire({
@@ -56,6 +66,7 @@ export default function ProductView({ className, product }) {
               alt={product?.name}
               width={1200}
               height={1200}
+              loading="eager"
               className="object-contain"
             />
 
@@ -79,6 +90,7 @@ export default function ProductView({ className, product }) {
                     alt={product?.name}
                     width={600}
                     height={600}
+                    loading="eager"
                     className={`w-full h-full object-contain ${
                       src !== img?.imageurl ? "opacity-80" : ""
                     }`}

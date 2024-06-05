@@ -5,7 +5,10 @@ export default async function setBannerSettings(data) {
   try {
     const ayarlar = await prisma.ayarlar.findFirst();
 
-    const formData = ayarlar.banner !== null ? ayarlar.banner : data;
+    const formData = {
+      banner: ayarlar.banner.banner,
+      bannerb: ayarlar.banner.bannerb,
+    };
 
     if (data.banner !== null) formData.banner = data.banner;
     if (data.bannerb !== null) formData.bannerb = data.bannerb;

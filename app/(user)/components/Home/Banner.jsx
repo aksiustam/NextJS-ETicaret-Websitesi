@@ -20,6 +20,7 @@ export default function Banner({ className, settings, allcategory }) {
                     alt="Biçakcı Serkan Banner"
                     width={1200}
                     height={1200}
+                    loading="eager"
                     className="w-full h-full object-contain"
                   />
                 </Link>
@@ -35,6 +36,7 @@ export default function Banner({ className, settings, allcategory }) {
                     alt="Biçakcı Serkan Banner-2"
                     width={1200}
                     height={1200}
+                    loading="eager"
                     className="w-full h-full object-contain"
                   />
                 </Link>

@@ -22,41 +22,38 @@ const AboutUsClient = () => {
           <div className="w-full min-h-[665px] lg:flex lg:space-x-12 items-center pb-10 lg:pb-0">
             <div className="md:w-[570px] w-full md:h-[560px] h-auto rounded overflow-hidden my-5 lg:my-0">
               <Image
-                src={`/assets/images/about-banner.png`}
+                src={`/assets/images/hakkimizda.webp`}
                 alt="Hakkımızda"
-                width={600}
-                height={600}
+                width={1200}
+                height={1200}
+                loading="eager"
                 className="w-full h-full"
               />
             </div>
             <div className="content flex-1">
               <h1 className="text-[24px] font-medium text-qblack mb-2.5">
-                Serkan Bıçakçı: Kaliteli Bıçak ve Hediyelik Eşya Alışverişinizin
-                Adresi
+                BIÇAKCI SERKAN - Gelenekten Geleceğe
               </h1>
               <p className="text-[15px] text-qgraytwo leading-7 mb-2.5">
-                Serkan Bıçakçı olarak, bıçak ve hediyelik eşya sektöründe uzun
-                yıllara dayanan deneyimimizle siz değerli müşterilerimize hizmet
-                vermekteyiz. Mağazamızda, kaliteli ve özgün tasarımlarıyla
-                dikkat çeken kılıç, karambit, bayonet gibi süs bıçaklarının yanı
-                sıra, Osmanlı dönemine ait tarihi bıçak modelleri de
-                bulabilirsiniz. Ayrıca kasap ve mutfak bıçaklarımız, profesyonel
-                ve amatör kullanıcıların tüm ihtiyaçlarına cevap verecek
-                çeşitliliktedir.
+                Merhaba, ben Serkan Şenol. Konya Akşehir doğumluyum ve
+                çocukluğumdan beri bıçakçılığa tutkuyla bağlıyım. Bu mesleği 5
+                yıldır profesyonel olarak icra ediyorum. Hevesimden miras kalan
+                bu zanaatı, modern tekniklerle harmanlayarak, hem geleneksel hem
+                de yenilikçi ürünler sunuyorum.
               </p>
               <p className="text-[15px] text-qgraytwo leading-7 mb-2.5">
-                Geniş ürün yelpazemizle sadece bıçaklarla sınırlı kalmayıp,
-                özenle seçilmiş hediyelik tespihler de sunmaktayız. Her biri, el
-                işçiliği ve kaliteli malzemelerle üretilmiş olup, sevdiklerinize
-                anlamlı ve kalıcı hediyeler vermeniz için idealdir.
+                Tarihin zengin kılıç ve bıçakçılık kültüründen ilham alarak, her
+                bıçağı titizlikle ve özenle seçiyorum alıyorum veya
+                ürettiriyorum. Müşteri memnuniyetini ön planda tutarak, kaliteli
+                ve dayanıklı bıçaklar sunmayı amaçlıyorum. Bıçaklarımız, hem
+                günlük kullanım hem kampçılara ve avcılara özel hem de
+                koleksiyon değeri taşıyan özel parçalar olarak büyük ilgi
+                görüyor.
               </p>
               <p className="text-[15px] text-qgraytwo leading-7 mb-2.5">
-                Müşteri memnuniyetini her zaman ön planda tutan anlayışımız ve
-                güler yüzlü hizmetimizle, alışveriş deneyiminizi keyifli ve
-                güvenli hale getirmeyi hedefliyoruz. Sitemizdeki tüm ürünler,
-                detaylı incelemelerden geçirilerek sizlere sunulmaktadır. Siz de
-                Serkan Bıçakçı ailesine katılın, kalite ve estetiği bir arada
-                yaşayın!
+                Bıçakcı Serkan olarak, bıçakçılık sanatını daha geniş kitlelere
+                tanıtmayı ve bu değerli zanaatı yeni nesillere aktarmayı
+                hedefliyoruz. Bizi tercih ettiğiniz için teşekkür ederiz.
               </p>
 
               <Link href="/iletisim">

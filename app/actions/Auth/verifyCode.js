@@ -1,6 +1,6 @@
 "use server";
 import prisma from "@/lib/prismadb";
-import nodemailer from "nodemailer";
+
 export default async function verifyCode(data) {
   try {
     const { email, code } = data;
@@ -21,6 +21,7 @@ export default async function verifyCode(data) {
           emailVerified: true,
         },
       });
+      const nodemailer = await import("nodemailer");
 
       let transporter = nodemailer.createTransport({
         host: "mail.nilrio.com",

@@ -18,6 +18,7 @@ const LoginClient = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       const { ok, error } = await signIn("credentials", {
         email: data.email,
@@ -202,13 +203,14 @@ const LoginClient = () => {
                   </div>
                   <div className="input-item mb-5">
                     <InputCom
-                      placeholder="● ● ● ● ● ●"
+                      placeholder="* * * * * "
                       label="Şifre*"
                       name="password"
                       type="password"
-                      register={register}
-                      error={errors}
                       inputClasses="!h-[50px]"
+                      errors={errors}
+                      register={register}
+                      required="Şifre Giriniz"
                       minLength="6"
                       pattern={{
                         value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,

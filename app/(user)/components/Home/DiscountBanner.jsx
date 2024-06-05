@@ -1,13 +1,12 @@
 export default function DiscountBanner() {
   return (
     <div
-      className={`discount-banner w-full h-[310px] bg-cover flex justify-center items-center `}
+      className={`discount-banner w-full h-[310px]  flex justify-center items-center !bg-cover !bg-[70%] lg:!bg-[25%]`}
       style={{
-        background: `url(/assets/images/alt-banner.png) no-repeat`,
-        backgroundSize: "cover",
+        background: `url(/assets/images/alt-banner.webp) no-repeat`,
       }}
     >
-      <div className="container-x ml-auto mr-[35%]">
+      <div className="container-x ml-12 md:ml-auto mr-[35%]">
         <div className="best-services w-full  flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10">
           <div className="item">
             <div className="flex space-x-5 items-center">
@@ -35,7 +34,7 @@ export default function DiscountBanner() {
                 <p className="text-white text-[15px] font-700 tracking-wide mb-1">
                   Bedava Kargo
                 </p>
-                <p className="text-sm text-qblue-white">
+                <p className="text-sm text-qblue-white text-nowrap md:text-wrap">
                   3000₺ ve üzerine bedava
                 </p>
               </div>
@@ -72,7 +71,7 @@ export default function DiscountBanner() {
                 <p className="text-white text-[15px] font-700 tracking-wide mb-1">
                   Kolay İade
                 </p>
-                <p className="text-sm text-qblue-white">
+                <p className="text-sm text-qblue-white text-nowrap md:text-wrap">
                   30 gün içinde iade etme
                 </p>
               </div>
@@ -100,7 +99,7 @@ export default function DiscountBanner() {
                 <p className="text-white text-[15px] font-700 tracking-wide mb-1">
                   Gerçek Kalite
                 </p>
-                <p className="text-sm text-qblue-white">
+                <p className="text-sm text-qblue-white text-nowrap md:text-wrap">
                   Müşterilerimizin %90&apos;ı Memnun
                 </p>
               </div>

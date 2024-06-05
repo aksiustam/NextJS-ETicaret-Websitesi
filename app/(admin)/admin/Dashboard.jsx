@@ -114,6 +114,7 @@ const Dashboard = (props) => {
                       width={150}
                       height={150}
                       className="w-12 h-12 object-contain"
+                      loading="eager"
                     />
                   </th>
                   <td className="px-6 align-middle text-xs whitespace-nowrap p-2">
@@ -174,6 +175,7 @@ const Dashboard = (props) => {
                       width={150}
                       height={150}
                       className="w-12 h-12 object-contain"
+                      loading="eager"
                     />
                   </th>
                   <td className="px-6 align-middle text-xs whitespace-nowrap p-2">

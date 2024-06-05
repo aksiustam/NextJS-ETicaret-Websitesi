@@ -228,6 +228,7 @@ const AdminProductClient = (props) => {
                 alt="Product image"
                 width={150}
                 height={150}
+                loading="eager"
                 className="w-full h-full object-contain"
               />
             </div>

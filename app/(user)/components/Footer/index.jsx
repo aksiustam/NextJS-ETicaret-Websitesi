@@ -12,10 +12,11 @@ export default function Footer() {
           <div className="mb-[40px]">
             <Link href="/">
               <Image
-                src={"/assets/images/logo.svg"}
+                src={"/assets/images/bicakcilogo.svg"}
                 alt="logo"
                 width={150}
                 height={30}
+                loading="eager"
                 className="object-contain"
               />
             </Link>
@@ -165,6 +166,7 @@ export default function Footer() {
                 alt="payment-getways"
                 width={300}
                 height={110}
+                loading="eager"
               />
             </a>
           </div>

@@ -1,9 +1,8 @@
 "use client";
 import useCart from "@/hooks/useCart";
 import Link from "next/link";
-import Swal from "sweetalert2";
 import errimg from "@/public/assets/images/errorproduct.webp";
-import Image from "next/image";
+import toast from "react-hot-toast";
 export default function ProductCard({ datas }) {
   const { addToBasket } = useCart();
 
@@ -25,19 +24,10 @@ export default function ProductCard({ datas }) {
       };
 
       addToBasket(data);
-      Swal.fire({
-        icon: "success",
-        title: "Sepete Eklendi",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+
+      toast.success("Başarıyla Sepete Eklendi");
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Stocklarda Kalmadı",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      toast.error("Stocklarda Kalmadı!");
     }
   };
 

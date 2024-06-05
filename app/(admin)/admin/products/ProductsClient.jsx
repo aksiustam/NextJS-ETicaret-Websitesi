@@ -359,6 +359,7 @@ const ProductsClient = (props) => {
                               alt="image"
                               width={80}
                               height={80}
+                              loading="eager"
                               className="object-contain"
                             />
                           </Link>

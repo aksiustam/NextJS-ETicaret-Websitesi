@@ -26,6 +26,7 @@ export default function ProductsTable({ className, basket, removeBasket }) {
                         alt={item?.name}
                         width={100}
                         height={100}
+                        loading="eager"
                         className="w-full h-full object-contain"
                       />
                     </div>

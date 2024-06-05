@@ -3,6 +3,8 @@ import prisma from "@/lib/prismadb";
 
 export default async function setDiscPage(data) {
   try {
+    const ayarlar = await prisma.ayarlar.findFirst();
+
     const formData = {
       bannerUst: data.bannerUst,
       bannerAlt: data.bannerAlt,
@@ -10,8 +12,13 @@ export default async function setDiscPage(data) {
       buttonUrl: data.buttonUrl,
       checkbox: data.checkbox,
       date: data.date,
-      discres: data.discres,
+      discres: ayarlar.discountpage.discres,
     };
+
+    if (data.discres !== null) {
+      formData.discres = data.discres;
+    }
+
     await prisma.ayarlar.update({
       where: { id: 1 },
       data: {

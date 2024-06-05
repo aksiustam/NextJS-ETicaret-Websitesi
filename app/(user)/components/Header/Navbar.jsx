@@ -91,6 +91,7 @@ export default function Navbar({ user, basket, category }) {
                                   alt="Kategori"
                                   width={50}
                                   height={50}
+                                  loading="eager"
                                   className="w-5 h-5 object-contain"
                                 />
                               )}
@@ -99,7 +100,7 @@ export default function Navbar({ user, basket, category }) {
                               {item?.name}
                             </span>
                           </div>
-                          <div>
+                          {/* <div>
                             <span>
                               <svg
                                 className="fill-current"
@@ -125,7 +126,7 @@ export default function Navbar({ user, basket, category }) {
                                 />
                               </svg>
                             </span>
-                          </div>
+                          </div> */}
                         </div>
                       </Link>
                     </li>
@@ -136,16 +137,17 @@ export default function Navbar({ user, basket, category }) {
             <div className="w-[220px] flex items-center justify-center h-full bg-black relative">
               <Link href="/">
                 <Image
-                  src={`/assets/images/logo.svg`}
+                  src={`/assets/images/bicakcilogo.svg`}
                   alt="logo"
                   fill
                   className=" object-contain"
+                  loading="eager"
                 />
               </Link>
             </div>
             <div className="w-[270px] flex space-x-6 items-center justify-end">
               <div className="cart-wrapper group relative py-4">
-                <div className="cart relative cursor-pointer">
+                <div className="relative">
                   <Link href="/sepet">
                     <span>
                       <ThinBag />

@@ -15,7 +15,7 @@ export default function Header({ className, drawerAction, user, category }) {
           <div onClick={drawerAction}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="white"
@@ -31,10 +31,11 @@ export default function Header({ className, drawerAction, user, category }) {
           <div className="relative">
             <Link href="/">
               <Image
-                src={"/assets/images/logo.svg"}
+                src={"/assets/images/bicakcilogo.svg"}
                 alt="logo"
                 width={168}
                 height={55}
+                loading="eager"
               />
             </Link>
           </div>

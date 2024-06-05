@@ -11,6 +11,7 @@ export default async function Home() {
   const products = await getProducts();
   const settings = await getSettings();
   const allcategory = await getAllCategory();
+
   return (
     <>
       <Banner settings={settings} allcategory={allcategory} />
@@ -20,7 +21,10 @@ export default async function Home() {
       >
         <CategoriesSection allcategory={allcategory} />
       </ViewMoreTitle>
-      <CampaignCountDown className="mb-[60px] " settings={settings} />
+      {settings?.discountpage?.checkbox === "true" && (
+        <CampaignCountDown className="mb-[60px] " settings={settings} />
+      )}
+
       <SectionStyleThreeHomeTwo
         products={products}
         sectionTitle="Popüler Ürünler"

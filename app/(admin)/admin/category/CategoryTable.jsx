@@ -404,6 +404,7 @@ const CategoryTable = (props) => {
                           alt="Kategori"
                           width={70}
                           height={70}
+                          loading="eager"
                         />
                       )}
                     </td>
