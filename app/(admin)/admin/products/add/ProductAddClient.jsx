@@ -33,7 +33,6 @@ const ProductAddClient = (props) => {
   const onSubmit = async (data) => {
     const formData = { ...data, quill: quillValue };
 
-    console.log(formData);
     const res = await setProduct(formData);
     if (res === true) {
       await Swal.fire({
@@ -43,13 +42,13 @@ const ProductAddClient = (props) => {
         timer: 1500,
       });
       setCImage([]);
+      router.refresh();
     } else {
       Swal.fire({
         icon: "error",
         title: JSON.stringify(res.message),
       });
     }
-    router.refresh();
   };
 
   useEffect(() => {
@@ -189,6 +188,7 @@ const ProductAddClient = (props) => {
             >
               {({ open }) => {
                 function handleOnClick() {
+                  setCImage([]);
                   open();
                 }
 

@@ -1,5 +1,12 @@
 "use server";
 import prisma from "@/lib/prismadb";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export default async function setDiscPage(data) {
   try {
@@ -16,6 +23,7 @@ export default async function setDiscPage(data) {
     };
 
     if (data.discres !== null) {
+      await cloudinary.uploader.destroy(ayarlar.discountpage.discres.imageid);
       formData.discres = data.discres;
     }
 

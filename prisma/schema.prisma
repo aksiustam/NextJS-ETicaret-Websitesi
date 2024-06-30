@@ -9,35 +9,34 @@ generator client {
 }
 
 model User {
-    id            Int       @id @default(autoincrement())
-    name          String?
-    lastname      String?
-    email         String    @unique
-    code          String?
-    emailVerified Boolean?  @default(false)
-    tel           String?
-    password      String
-    newscheck     Boolean?
-    createdAt     DateTime? @default(now())
-    updatedAt     DateTime? @updatedAt
-    Siparis       Siparis[]
-    Role          Role      @default(USER)
-    Account       Account[]
-    Address       Address[]
+    id                 Int                  @id @default(autoincrement())
+    name               String?
+    lastname           String?
+    email              String               @unique
+    code               String?
+    emailVerified      Boolean?             @default(false)
+    tel                String?
+    identityNumber     String?
+    password           String
+    newscheck          Boolean?
+    createdAt          DateTime?            @default(now())
+    updatedAt          DateTime?            @updatedAt
+    Role               Role                 @default(USER)
+    Account            Account[]
+    Address            Address[]
+    SiparisOrder       SiparisOrder[]
+    SiparisOrderFinish SiparisOrderFinish[]
 
     @@index([email])
 }
 
 model Address {
     id         Int     @id @default(autoincrement())
-    name       String?
-    adress     String?
-    state      String?
+    adressname String?
+    address    String?
     country    String?
-    zipcode    String?
-    category   String?
-    company    String?
-    companytva String?
+    city       String?
+    zipCode    String?
     User       User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId     Int?
 }
@@ -100,33 +99,58 @@ model Category {
     @@index([slug])
 }
 
-model Siparis {
-    id         Int       @id @default(autoincrement())
-    username   String?
-    User       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId     Int?
-    email      String?
-    billadress Json?
-    sendadress Json?
-    basket     Json?
-    amount     Float?
-    note       String?
-    sendmail   String?
-    shipping   Json?
-    status     String?
-    error      String?
-    kargono    String?
-    createdAt  DateTime? @default(now())
-    updatedAt  DateTime? @updatedAt
+model SiparisOrder {
+    id             Int       @id @default(autoincrement())
+    conversationId String?
+    basketId       String?   @unique
+    User           User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId         Int?
+    name           String?
+    surname        String?
+    email          String?
+    identityNumber String?
+    note           String?
+    tel            String?
+    billadress     Json?
+    sendadress     Json?
+    basket         Json?
+    amount         Float?
+    status         String?
+    createdAt      DateTime? @default(now())
+    updatedAt      DateTime? @updatedAt
+
+    @@index([basketId])
+}
+
+model SiparisOrderFinish {
+    id             Int       @id @default(autoincrement())
+    conversationId String?
+    basketId       String?   @unique
+    paymentId      String?
+    User           User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId         Int?
+    userinfo       Json?
+    billadress     Json?
+    sendadress     Json?
+    basket         Json?
+    amount         Float?
+    note           String?
+    status         String?
+    paymentStatus  String?
+    sendmail       String?
+    error          String?
+    createdAt      DateTime? @default(now())
+    updatedAt      DateTime? @updatedAt
+
+    @@index([basketId])
 }
 
 model Contact {
-    id       Int     @id @default(autoincrement())
-    name     String?
-    lastname String?
-    email    String?
-    konu     String?
-    not      String?
+    id    Int     @id @default(autoincrement())
+    name  String?
+    email String?
+    konu  String?
+    not   String?
 }
 
 enum Role {

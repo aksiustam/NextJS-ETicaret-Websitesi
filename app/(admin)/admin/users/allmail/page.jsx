@@ -1,7 +1,8 @@
 import React from "react";
+import AllMailClient from "./AllMailClient";
 
 const page = () => {
-  return <div>YAPIM AŞAMASINDA</div>;
+  return <AllMailClient />;
 };
 
 export default page;

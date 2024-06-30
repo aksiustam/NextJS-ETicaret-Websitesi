@@ -2,8 +2,33 @@
 
 import InputCom from "../../components/Helpers/InputCom";
 import PageTitle from "../../components/Helpers/PageTitle";
-
+import { useForm } from "react-hook-form";
+import setContact from "@/app/actions/Contact/setContact";
+import Swal from "sweetalert2";
 const ContactClient = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const formData = { ...data };
+      const res = await setContact(formData);
+      if (res === true)
+        Swal.fire(
+          "Teşekkürler",
+          "Mesajınız Başarıyla Gönderilmiştir",
+          "success"
+        );
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: JSON.stringify(error.response.data),
+      });
+    }
+  };
   return (
     <>
       <div className="page-title mb-10">
@@ -55,10 +80,7 @@ const ContactClient = () => {
                     Telefon
                   </p>
                   <p className="text-[15px] text-black leading-[30px] text-center">
-                    +(123) 456 78 90
-                  </p>
-                  <p className="text-[15px] text-black leading-[30px] text-center">
-                    +(123) 456 78 90
+                    +90 506 246 27 17
                   </p>
                 </div>
                 <div className="xl:w-1/2 w-full h-[196px] flex flex-col item justify-center bg-[#D3EFFF] p-5">
@@ -102,10 +124,7 @@ const ContactClient = () => {
                     Email
                   </p>
                   <p className="text-[15px] text-black leading-[30px] text-center">
-                    email@gmail.com
-                  </p>
-                  <p className="text-[15px] text-black leading-[30px] text-center">
-                    email@gmail.com
+                    serkansenol1453@gmail.com
                   </p>
                 </div>
               </div>
@@ -169,51 +188,64 @@ const ContactClient = () => {
                 </span>
               </div>
               <div className="inputs mt-5">
-                <div className="mb-4">
-                  <InputCom
-                    label="Ad Soyad*"
-                    placeholder="Ad Soyad"
-                    name="name"
-                    inputClasses="!h-[50px]"
-                  />
-                </div>
-                <div className="mb-4">
-                  <InputCom
-                    label="Email Adresi*"
-                    placeholder="deneme@gmail.com"
-                    name="email"
-                    inputClasses="!h-[50px]"
-                    pattern={{
-                      value:
-                        /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
-                      message: "Doğru Email Giriniz",
-                    }}
-                  />
-                </div>
-                <div className="mb-4">
-                  <InputCom
-                    label="Konu*"
-                    placeholder="Konu ekleyiniz"
-                    name="subject"
-                    inputClasses="!h-[50px]"
-                  />
-                </div>
-                <div className="mb-5">
-                  <h6 className="input-label text-qgray capitalize text-[13px] font-normal block mb-2 ">
-                    Mesaj*
-                  </h6>
-                  <textarea
-                    placeholder="Mesaj..."
-                    className="w-full h-[105px] focus:ring-0 focus:outline-none p-3 border border-qgray-border placeholder:text-sm"
-                  ></textarea>
-                </div>
-                <div>
-                  <a href="#">
-                    <div className="black-btn text-sm font-semibold w-full h-[50px] flex justify-center items-center">
-                      <span>Gönder</span>
-                    </div>
-                  </a>
-                </div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="mb-4">
+                    <InputCom
+                      label="Ad Soyad*"
+                      placeholder="Ad Soyad"
+                      name="name"
+                      inputClasses="!h-[50px]"
+                      errors={errors}
+                      register={register}
+                      required="Ad Soyad Giriniz"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <InputCom
+                      label="Email Adresi*"
+                      placeholder="deneme@gmail.com"
+                      name="email"
+                      inputClasses="!h-[50px]"
+                      errors={errors}
+                      register={register}
+                      required="Email Giriniz"
+                      pattern={{
+                        value:
+                          /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
+                        message: "Doğru Email Giriniz",
+                      }}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <InputCom
+                      label="Konu*"
+                      placeholder="Konu ekleyiniz"
+                      name="konu"
+                      inputClasses="!h-[50px]"
+                      errors={errors}
+                      register={register}
+                      required="Konu Giriniz"
+                    />
+                  </div>
+                  <div className="mb-5">
+                    <h6 className="input-label text-qgray capitalize text-[13px] font-normal block mb-2 ">
+                      Mesaj*
+                    </h6>
+                    <textarea
+                      placeholder="Mesaj..."
+                      className="w-full h-[105px] focus:ring-0 focus:outline-none p-3 border border-qgray-border placeholder:text-sm"
+                      {...register("not")}
+                    ></textarea>
+                  </div>
+                  <div>
+                    <button
+                      className="black-btn text-sm font-semibold w-full h-[50px] flex justify-center items-center"
+                      type="sumbit"
+                    >
+                      Gönder
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

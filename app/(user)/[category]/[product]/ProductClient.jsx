@@ -11,24 +11,40 @@ export default function ProductClient(props) {
     <>
       <div className="single-product-wrapper w-full ">
         <div className="product-view-main-wrapper bg-white pt-[30px] w-full">
-          <div className="breadcrumb-wrapper w-full ">
-            <div className="container-x mx-auto">
-              <BreadcrumbCom
-                paths={[
-                  { name: "Anasayfa", path: "/" },
-                  {
-                    name: product?.name,
-                    path: `/${product?.Category?.slug}/${product?.slug}`,
-                  },
-                ]}
-              />
-            </div>
-          </div>
-          <div className="w-full bg-white pb-[60px]">
-            <div className="container-x mx-auto">
-              <ProductView product={product} />
-            </div>
-          </div>
+          {product !== null ? (
+            <>
+              <div className="breadcrumb-wrapper w-full ">
+                <div className="container-x mx-auto">
+                  <BreadcrumbCom
+                    paths={[
+                      { name: "Anasayfa", path: "/" },
+                      {
+                        name: product?.name,
+                        path: `/${product?.Category?.slug}/${product?.slug}`,
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+              <div className="w-full bg-white pb-[60px]">
+                <div className="container-x mx-auto">
+                  <ProductView product={product} />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-full bg-white pb-[60px]">
+                <div className="container-x mx-auto">
+                  <div className="w-full flex flex-1 items-center justify-center text-center ">
+                    Aradığınız Ürün Bulunmamaktadır.
+                    <br /> Aşşağıdan ürün seçerek alışverişinize devam
+                    edebilirsiniz...
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="related-product w-full bg-white">

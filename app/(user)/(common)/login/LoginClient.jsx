@@ -18,7 +18,6 @@ const LoginClient = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const { ok, error } = await signIn("credentials", {
         email: data.email,

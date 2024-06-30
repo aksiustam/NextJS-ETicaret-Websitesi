@@ -41,10 +41,8 @@ function generatePasswordCode() {
 
 export default async function forgotPass(email) {
   try {
-    console.log(email);
     const user = await prisma.user.findUnique({ where: { email: email } });
 
-    console.log(user);
     if (!user) {
       return {
         message: "Email adresi bulunamadı! 3 dakika sonra tekrar deneyiniz",
@@ -61,23 +59,22 @@ export default async function forgotPass(email) {
       const nodemailer = await import("nodemailer");
 
       let transporter = nodemailer.createTransport({
-        host: "mail.nilrio.com",
+        host: "mail.bicakciserkan.com",
         port: 465,
         secure: true, // upgrade later with STARTTLS
         auth: {
-          user: "info@nilrio.com",
-          pass: "SS$RrkRlAkn*",
+          user: "info@bicakciserkan.com",
+          pass: "Cod3fO2k8@%i",
         },
       });
-
-      const html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></head><div style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0">Mot de passe oublié de Nilrio<div></div></div><body style="background-color:#efeef1;font-family:HelveticaNeue,Helvetica,Arial,sans-serif"><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width:580px;margin:30px auto;background-color:#fff"><tbody><tr style="width:100%"><td><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="display:flex;justify-content:center;aling-items:center;padding:15px"><tbody><tr><td><img alt="logo" height="50" src="https://testtest.nilrio.com/assets/img/nilrio-logo.png" style="display:flex;outline:0;border:none;text-decoration:none;justify-content:center;aling-items:center;padding:15px" width="285"></td></tr></tbody></table><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="padding:5px 20px 10px 20px"><tbody><tr><td><p style="font-size:14px;line-height:26px;margin:16px 0;text-align:center;font-weight:700">Bonjour USER</p><p style="font-size:14px;line-height:26px;margin:16px 0;text-align:center;font-weight:700">Voici votre nouveau mot de passe :<p style="font-size:14px;line-height:26px;margin:16px 0;color:red;font-weight:700;text-align:center">PASSWORD</p></p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">Nous vous rappelons que ce mot de passe remplace celui que vous utilisiez précédemment. Veillez à bien respecter les majuscules et les minuscules.</p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">N’hésitez pas à le changer depuis votre espace profil</p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">(Attention 6 caractères contenant une majuscule, une minuscule et un chiffre minimum)</p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">Merci<br>L&#x27;équipe NILRIO</p></td></tr></tbody></table></td></tr></tbody></table><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width:580px;margin:0 auto"><tbody><tr><td><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"><tbody style="width:100%"><tr style="width:100%"><p style="font-size:14px;line-height:24px;margin:16px 0;text-align:center;color:#706a7b">© CopyRight Nilrio, All Rights Reserved<br>6 Rue de Palestro Pantin, France</p></tr></tbody></table></td></tr></tbody></table></body></html>`;
+      const html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></head><div style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0">Şifremi Unuttum - Bıçakcı Serkan<div></div></div><body style="background-color:#efeef1;font-family:HelveticaNeue,Helvetica,Arial,sans-serif"><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width:580px;margin:30px auto;background-color:#fff"><tbody><tr style="width:100%"><td><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="display:flex;justify-content:center;aling-items:center;padding:15px"><tbody><tr><td><img alt="logo" height="90" src="https://bicakci.aydtanitim.com/assets/images/bicakcilogo.svg" style="display:flex;outline:0;border:none;text-decoration:none;justify-content:center;aling-items:center;padding:15px" width="385"></td></tr></tbody></table><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="padding:5px 20px 10px 20px"><tbody><tr><td><p style="font-size:14px;line-height:26px;margin:16px 0;text-align:center;font-weight:700">Merhaba USER</p><p style="font-size:14px;line-height:26px;margin:16px 0;text-align:center;font-weight:700">Yeni Şifreniz budur :<p style="font-size:14px;line-height:26px;margin:16px 0;color:red;font-weight:700;text-align:center">PASSWORD</p></p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">Bu şifrenin önceki şifrenizin yerine geçtiğini hatırlatırız. Büyük ve küçük harflere dikkat etmeyi unutmayın.</p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">Şifrenizi Profil kısmından geri değiştirebilirsiniz</p><p style="font-size:14px;line-height:1.5;margin:16px 0;text-align:center">Teşekkürler<br>Bıçakcı Serkan</p></td></tr></tbody></table></td></tr></tbody></table><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width:580px;margin:0 auto"><tbody><tr><td><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"><tbody style="width:100%"><tr style="width:100%"><p style="font-size:14px;line-height:24px;margin:16px 0;text-align:center;color:#706a7b">© CopyRight BıçakcıSerkan<br>Erenler, Kazdağı Sk. 7bb, 42050 Karatay/Konya</p></tr></tbody></table></td></tr></tbody></table></body></html>`;
 
       const modifiedHtml = html.replace(/USER/g, user.name);
 
       const modifiedHtmlto = modifiedHtml.replace(/PASSWORD/g, pass);
       // Şifremi Unuttum Mail
       let mailOptions = {
-        from: "info@nilrio.com",
+        from: "info@bicakciserkan.com",
         to: email,
         subject: "Bıçakcı Serkan - Yeni Şifre",
         html: modifiedHtmlto,

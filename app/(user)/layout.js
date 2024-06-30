@@ -10,7 +10,7 @@ import CartProvider from "@/provider/CartProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Next Knife",
+  title: "Bıçakcı Serkan",
   description: "Bıçakcı Serkan Bıçak Malzemeleri",
 };
 

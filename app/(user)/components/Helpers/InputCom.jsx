@@ -14,6 +14,7 @@ export default function InputCom({
   errors,
   required,
   pattern,
+  myerror,
   ...rest
 }) {
   return (
@@ -25,6 +26,7 @@ export default function InputCom({
         >
           {label}{" "}
           <span className="text-red-600">{errors?.[name]?.message}</span>
+          <span className="text-red-600">{myerror}</span>
         </label>
       )}
       <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative">

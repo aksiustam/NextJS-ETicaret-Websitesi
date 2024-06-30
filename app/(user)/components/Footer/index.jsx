@@ -55,16 +55,9 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
+                    <Link href="/siparistakip">
                       <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                         Sipariş Sorgula
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/">
-                      <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                        Kargo Takip
                       </span>
                     </Link>
                   </li>
@@ -81,30 +74,23 @@ export default function Footer() {
                 <div>
                   <ul className="flex flex-col space-y-4 ">
                     <li>
-                      <Link href="/kurumsal/gizlilik-sozlesme">
+                      <Link href="/kurumsal/mesafeli-satis-sozlesmesi">
                         <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                           Mesafeli Satış Sözleşmesi
                         </span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/kurumsal/gizlilik-sozlesme">
+                      <Link href="/kurumsal/gizlilik-cerez-politikasi">
                         <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                          Gizlilik ve Güvenlik
+                          Gizlilik ve Çerez Politikası
                         </span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/kurumsal/gizlilik-sozlesme">
+                      <Link href="/kurumsal/teslimat-ve-iade-sartlari">
                         <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                          İptal İade Koşullari
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/kurumsal/gizlilik-sozlesme">
-                        <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                          Kişisel Veriler Politikası
+                          Teslimat ve İade Şartları
                         </span>
                       </Link>
                     </li>

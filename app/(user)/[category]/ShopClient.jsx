@@ -101,7 +101,7 @@ export default function ShopClient({ allcategory, data, products }) {
 
             <div className="flex-1">
               {subdata?.length > 0 && (
-                <div className="products-sorting w-full bg-white md:h-[110px] flex space-x-4 items-center p-[25px] mb-[5px] overflow-x-scroll">
+                <div className="products-sorting w-full bg-white md:h-[110px] flex space-x-4 items-center p-[25px] mb-[5px] overflow-x-scroll overflow-y-hidden  md:overflow-hidden">
                   {subdata?.map((item) => (
                     <div
                       key={item?.id}

@@ -218,13 +218,13 @@ const ProductsClient = (props) => {
             showConfirmButton: false,
             timer: 1500,
           });
+          router.refresh();
         } else {
           Swal.fire({
             icon: "error",
             title: res.message,
           });
         }
-        router.refresh();
       }
     });
   };

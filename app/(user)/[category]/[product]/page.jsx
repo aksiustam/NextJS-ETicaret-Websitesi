@@ -10,6 +10,7 @@ const page = async ({ params }) => {
   const data = await getProductSlug(product);
   const products = await getProducts();
   if (data !== null) await setOnClick(data);
+
   return (
     <>
       <ProductClient product={data} products={products} />

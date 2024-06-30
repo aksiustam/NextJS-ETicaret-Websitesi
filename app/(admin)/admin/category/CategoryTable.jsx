@@ -91,8 +91,8 @@ const CategoryTable = (props) => {
   const updateCat = async () => {
     const formData = {
       ...modalcat,
-      imageid: image?.public_id || undefined,
-      imageurl: image?.secure_url || undefined,
+      imageid: image?.public_id || null,
+      imageurl: image?.secure_url || null,
     };
     const res = await putAllCategory("category", formData);
     if (res === true) {

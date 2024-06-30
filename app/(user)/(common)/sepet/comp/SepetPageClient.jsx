@@ -1,6 +1,6 @@
 "use client";
 import useCart from "@/hooks/useCart";
-import InputCom from "../../../components/Helpers/InputCom";
+
 import PageTitle from "../../../components/Helpers/PageTitle";
 import ProductsTable from "./ProductsTable";
 import BreadcrumbCom from "../../../components/Common/BreadcrumbCom";
@@ -8,9 +8,7 @@ import EmptyCardError from "./EmptyCardError";
 import Link from "next/link";
 
 const SepetPageClient = () => {
-  const cart = false;
   const { basket, removeBasket } = useCart();
-  console.log(basket?.length);
 
   const cartTotal = () => {
     return basket

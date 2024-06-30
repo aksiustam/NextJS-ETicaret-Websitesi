@@ -1,5 +1,12 @@
 "use server";
 import prisma from "@/lib/prismadb";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export default async function delAllCategory(role, data) {
   try {
@@ -7,29 +14,16 @@ export default async function delAllCategory(role, data) {
 
     switch (catbrand) {
       case "category":
+        await cloudinary.uploader.destroy(data.imageid);
         await prisma.category.delete({
           where: { id: data.id },
         });
 
         break;
       case "subcat":
+        await cloudinary.uploader.destroy(data.imageid);
         await prisma.SubCategory.delete({
           where: { id: data.id },
-        });
-
-        break;
-      case "color":
-        await prisma.color.update({
-          where: { id: data.id },
-          data: { archive: data.archive },
-        });
-
-        break;
-
-      case "size":
-        await prisma.size.update({
-          where: { id: data.id },
-          data: { archive: data.archive },
         });
 
         break;

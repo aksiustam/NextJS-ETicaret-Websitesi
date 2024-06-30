@@ -103,7 +103,7 @@ export default function ProductCard({ datas }) {
         ) : (
           <p className="price">
             <span className="offer-price text-qred font-600 text-[18px] ">
-              {datas?.inprice}₺
+              {datas?.price}₺
             </span>
           </p>
         )}
