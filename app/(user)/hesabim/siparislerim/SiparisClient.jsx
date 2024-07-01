@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const SiparisClient = (props) => {
@@ -68,12 +69,14 @@ const SiparisClient = (props) => {
                     </span>
                   </td>
                   <td className="text-center py-4">
-                    <button
-                      type="button"
-                      className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
-                    >
-                      Detaylar
-                    </button>
+                    <Link href={`/hesabim/siparislerim/${item?.basketId}`}>
+                      <button
+                        type="button"
+                        className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
+                      >
+                        Detaylar
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               );

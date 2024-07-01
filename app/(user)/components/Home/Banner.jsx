@@ -4,6 +4,8 @@ import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 export default function Banner({ className, settings, allcategory }) {
   const data = settings?.banner;
   const { category } = allcategory;
@@ -18,7 +20,7 @@ export default function Banner({ className, settings, allcategory }) {
     slidesToScroll: 1,
     initialSlide: 0,
   };
-  const images = Array.from({ length: 52 }, (_, i) => `image${i + 1}`);
+  const images = Array.from({ length: 52 }, (_, i) => `image${i + 1}.jpg`);
 
   return (
     <>
@@ -53,25 +55,30 @@ export default function Banner({ className, settings, allcategory }) {
                   </Link>
                 </Slider>
               </div>
-
-              <div
-                data-aos="fade-left"
-                className="w-1/2 flex xl:flex-col flex-row  xl:space-y-[30px] h-full relative"
-              >
-                <Slider {...slidersettings}>
-                  {images.map((item, index) => (
-                    <Image
-                      key={index}
-                      src={`/assets/images/sizdengelenler/${item}.jpg`}
-                      alt="Biçakcı Serkan Sizden Gelenler"
-                      width={1200}
-                      height={1200}
-                      loading="eager"
-                      className="w-full h-full object-contain"
-                    />
-                  ))}
-                </Slider>
-              </div>
+              <PhotoProvider>
+                <div
+                  data-aos="fade-left"
+                  className="w-1/2 flex xl:flex-col flex-row  xl:space-y-[30px] h-full relative"
+                >
+                  <Slider {...slidersettings}>
+                    {images.map((item, index) => (
+                      <PhotoView
+                        src={`/assets/images/sizdengelenler/${item}`}
+                        key={index}
+                      >
+                        <Image
+                          src={`/assets/images/sizdengelenler/${item}`}
+                          alt="Biçakcı Serkan Sizden Gelenler"
+                          width={1200}
+                          height={1200}
+                          loading="eager"
+                          className="w-full h-full object-contain"
+                        />
+                      </PhotoView>
+                    ))}
+                  </Slider>
+                </div>
+              </PhotoProvider>
             </div>
           </div>
         </div>

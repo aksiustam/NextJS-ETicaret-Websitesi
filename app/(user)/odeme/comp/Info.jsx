@@ -521,7 +521,7 @@ const Info = (props) => {
                     defaultCountry="TR"
                     className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
                     value={tel}
-                    maxLength={14}
+                    maxLength={18}
                     onChange={setTel}
                   />
                 </div>

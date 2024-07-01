@@ -10,6 +10,14 @@ import setUserData from "@/app/actions/User/setUserData";
 import setUserEmail from "@/app/actions/User/setUserEmail";
 import setUserCodeVerify from "@/app/actions/User/setUserCodeVerify";
 import setUserResendCode from "@/app/actions/User/setUserResendCode";
+import "react-phone-number-input/style.css";
+import dynamic from "next/dynamic";
+
+// PhoneInput bileşenini dinamik olarak yükle
+const PhoneInput = dynamic(() => import("react-phone-number-input"), {
+  ssr: false,
+});
+
 export default function ProfilClient({ user }) {
   const {
     register,
@@ -20,9 +28,10 @@ export default function ProfilClient({ user }) {
       name: user?.name,
       lastname: user?.lastname,
       email: user?.email,
-      tel: user?.tel,
+      identityNumber: user?.identityNumber,
     },
   });
+  const [tel, setTel] = useState(user?.tel || null);
   const [newscheck, setNewsCheck] = useState(user?.newscheck);
   const [formdata, setFormData] = useState(null);
   const [code, setCode] = useState("");
@@ -49,7 +58,8 @@ export default function ProfilClient({ user }) {
       const formData = {
         name: data.name,
         lastname: data.lastname,
-        tel: data.tel,
+        tel: tel,
+        identityNumber: data.identityNumber,
         email: data.email,
         newscheck: newscheck,
       };
@@ -60,9 +70,10 @@ export default function ProfilClient({ user }) {
     } else {
       const formData = {
         name: data.name,
-        tel: data.tel,
         lastname: data.lastname,
         newscheck: newscheck,
+        tel: tel,
+        identityNumber: data.identityNumber,
       };
 
       const res = await setUserData(user.id, formData);
@@ -240,13 +251,42 @@ export default function ProfilClient({ user }) {
                   />
                 </div>
                 <div className="w-1/2 h-full">
+                  <div className="input-com w-full h-full">
+                    <label
+                      className={`text-qgray text-[13px] font-normal input-label capitalize block mb-2 `}
+                    >
+                      Telefon*
+                    </label>
+
+                    <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative">
+                      <PhoneInput
+                        id="phone"
+                        international="false"
+                        countries={["TR"]}
+                        defaultCountry="TR"
+                        className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
+                        value={tel}
+                        maxLength={18}
+                        onChange={setTel}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="input-item flex space-x-2.5 mb-8">
+                <div className="w-1/2 h-full">
                   <InputCom
-                    label="Telefon*"
+                    label="TC Kimlik No*"
+                    name="identityNumber"
                     type="text"
-                    inputClasses="!h-[50px]"
-                    name="tel"
+                    inputClasses="w-full !h-[50px]"
                     errors={errors}
                     register={register}
+                    maxLength={11}
+                    pattern={{
+                      value: /^\d{11}$/,
+                      message: "Sadece 11 Rakam Giriniz",
+                    }}
                   />
                 </div>
               </div>
