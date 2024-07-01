@@ -3,7 +3,7 @@ import Image from "next/image";
 import UseCart from "@/hooks/useCart";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-
+import "react-quill/dist/quill.snow.css";
 export default function ProductView({ className, product }) {
   const [src, setSrc] = useState(product?.images[0]?.imageurl);
 

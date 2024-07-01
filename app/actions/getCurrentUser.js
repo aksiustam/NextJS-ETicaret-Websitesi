@@ -22,6 +22,7 @@ export async function getCurrentUser() {
       include: {
         Address: true,
         Account: true,
+        SiparisOrderFinish: true,
       },
     });
     if (!currentUser) {

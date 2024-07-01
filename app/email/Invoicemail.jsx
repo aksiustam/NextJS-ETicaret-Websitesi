@@ -51,6 +51,7 @@ const Invoicemail = ({ sipdata }) => {
           style={{
             marginTop: "30px",
             minWidth: "650px",
+            maxWidth: "650px",
             margin: "auto",
             padding: "30px",
             border: "1px solid #eee",
@@ -72,9 +73,10 @@ const Invoicemail = ({ sipdata }) => {
                         <td>
                           <Img
                             src="https://bicakciserkan.com/assets/images/bicakcilogo.svg"
-                            width={400}
-                            height={400}
+                            width={150}
+                            height={150}
                             alt="logo"
+                            style={{ objectFit: "contain" }}
                           />
                         </td>
                       </tr>

@@ -8,7 +8,7 @@ const page = async () => {
   if (user !== null) {
     return (
       <ProfilLayout>
-        <SiparisClient />
+        <SiparisClient user={user} />
       </ProfilLayout>
     );
   } else {

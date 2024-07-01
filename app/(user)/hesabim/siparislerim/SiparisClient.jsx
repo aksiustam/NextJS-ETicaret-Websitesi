@@ -1,6 +1,8 @@
 import React from "react";
 
-const SiparisClient = () => {
+const SiparisClient = (props) => {
+  const { user } = props;
+
   return (
     <>
       <div className="relative w-full overflow-x-auto sm:rounded-lg">
@@ -17,118 +19,65 @@ const SiparisClient = () => {
               <td className="py-4 whitespace-nowrap  text-center"></td>
             </tr>
             {/* table heading end */}
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="text-center py-4">
-                <span className="text-lg text-qgray font-medium">#11</span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qgray  whitespace-nowrap">
-                  27/08/2024
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-sm rounded text-green-500 bg-green-100 p-2">
-                  Tamamlandı
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qblack whitespace-nowrap px-2 ">
-                  1432₺
-                </span>
-              </td>
-              <td className="text-center py-4">
-                <button
-                  type="button"
-                  className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
+            {user?.SiparisOrderFinish?.map((item) => {
+              const mydate = new Date(item?.createdAt);
+              const options = {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              };
+              const formattedDate = mydate.toLocaleDateString("tr-TR", options);
+
+              const time = formattedDate;
+
+              return (
+                <tr
+                  className="bg-white border-b hover:bg-gray-50"
+                  key={item?.id}
                 >
-                  Detaylar
-                </button>
-              </td>
-            </tr>
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="text-center py-4">
-                <span className="text-lg text-qgray font-medium">#11</span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qgray  whitespace-nowrap">
-                  27/08/2024
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-sm rounded text-green-500 bg-green-100 p-2">
-                  Tamamlandı
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qblack whitespace-nowrap px-2 ">
-                  1432₺
-                </span>
-              </td>
-              <td className="text-center py-4">
-                <button
-                  type="button"
-                  className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
-                >
-                  Detaylar
-                </button>
-              </td>
-            </tr>
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="text-center py-4">
-                <span className="text-lg text-qgray font-medium">#11</span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qgray  whitespace-nowrap">
-                  27/08/2024
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-sm rounded text-green-500 bg-green-100 p-2">
-                  Tamamlandı
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qblack whitespace-nowrap px-2 ">
-                  1432₺
-                </span>
-              </td>
-              <td className="text-center py-4">
-                <button
-                  type="button"
-                  className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
-                >
-                  Detaylar
-                </button>
-              </td>
-            </tr>
-            <tr className="bg-white border-b hover:bg-gray-50">
-              <td className="text-center py-4">
-                <span className="text-lg text-qgray font-medium">#11</span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qgray  whitespace-nowrap">
-                  27/08/2024
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-sm rounded text-green-500 bg-green-100 p-2">
-                  Tamamlandı
-                </span>
-              </td>
-              <td className="text-center py-4 px-2">
-                <span className="text-base text-qblack whitespace-nowrap px-2 ">
-                  1432₺
-                </span>
-              </td>
-              <td className="text-center py-4">
-                <button
-                  type="button"
-                  className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
-                >
-                  Detaylar
-                </button>
-              </td>
-            </tr>
+                  <td className="text-center py-4">
+                    <span className="text-lg text-qgray font-medium">
+                      #{item?.id}
+                    </span>
+                  </td>
+                  <td className="text-center py-4 px-2">
+                    <span className="text-base text-qgray  whitespace-nowrap">
+                      {time}
+                    </span>
+                  </td>
+                  <td className="text-center py-4 px-2">
+                    {item?.status === "SUCCESS" && (
+                      <span className="text-sm rounded text-blue-500 bg-blue-100 p-2">
+                        Beklemede
+                      </span>
+                    )}
+                    {item?.status === "SEND" && (
+                      <span className="text-sm rounded text-green-500 bg-green-100 p-2">
+                        Gönderildi
+                      </span>
+                    )}
+                    {item?.status === "ERROR" && (
+                      <span className="text-sm rounded text-red-500 bg-red-100 p-2">
+                        Hata Var {item?.error !== "null" ? item?.error : ""}
+                      </span>
+                    )}
+                  </td>
+                  <td className="text-center py-4 px-2">
+                    <span className="text-base text-qblack whitespace-nowrap px-2 ">
+                      {item?.amount?.toFixed(2)}₺
+                    </span>
+                  </td>
+                  <td className="text-center py-4">
+                    <button
+                      type="button"
+                      className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold"
+                    >
+                      Detaylar
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

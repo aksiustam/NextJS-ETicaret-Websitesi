@@ -79,48 +79,11 @@ const SepetPageClient = () => {
                                 type="radio"
                                 name="price"
                                 className="accent-pink-500"
+                                checked
                               />
                             </div>
                             <span className="text-[13px] text-normal text-qgraytwo">
-                              Bedava
-                            </span>
-                          </div>
-                          <span className="text-[13px] text-normal text-qgraytwo">
-                            +00.00₺
-                          </span>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="flex justify-between items-center">
-                          <div className="flex space-x-2.5 items-center">
-                            <div className="input-radio">
-                              <input
-                                type="radio"
-                                name="price"
-                                className="accent-pink-500"
-                              />
-                            </div>
-                            <span className="text-[13px] text-normal text-qgraytwo">
-                              Yurtiçi
-                            </span>
-                          </div>
-                          <span className="text-[13px] text-normal text-qgraytwo">
-                            +56.70₺
-                          </span>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="flex justify-between items-center">
-                          <div className="flex space-x-2.5 items-center">
-                            <div className="input-radio">
-                              <input
-                                type="radio"
-                                name="price"
-                                className="accent-pink-500"
-                              />
-                            </div>
-                            <span className="text-[13px] text-normal text-qgraytwo">
-                              Elden Teslim
+                              Ücretsiz Kargo
                             </span>
                           </div>
                           <span className="text-[13px] text-normal text-qgraytwo">

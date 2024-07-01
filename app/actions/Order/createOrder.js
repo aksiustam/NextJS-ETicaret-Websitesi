@@ -55,8 +55,8 @@ export default async function createOrder(user, userInfo, basket) {
           id: String(item.id),
           price:
             item.indirim === true
-              ? item.inprice.toFixed(1)
-              : item.price.toFixed(1),
+              ? item.inprice.toFixed(2)
+              : item.price.toFixed(2),
           name: item.name,
           category1: item.catslug,
           itemType: "PHYSICAL",
@@ -70,7 +70,7 @@ export default async function createOrder(user, userInfo, basket) {
     const formData = {
       locale: "tr",
       conversationId: String(randomKey),
-      price: total.toFixed(1),
+      price: total.toFixed(2),
       basketId: String(bKey),
       paymentGroup: "PRODUCT",
       buyer: {
@@ -107,7 +107,7 @@ export default async function createOrder(user, userInfo, basket) {
           ? "http://localhost:3000/api/iyzico-order"
           : "https://bicakciserkan.com/api/iyzico-order",
       currency: "TRY",
-      paidPrice: total.toFixed(1),
+      paidPrice: total.toFixed(2),
     };
     // https://webhook.site/4ed223d3-010a-40a6-bd6d-4e0c9fa0f9c7
     const url =

@@ -2,11 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { CiCircleQuestion, CiCircleAlert, CiCircleCheck } from "react-icons/ci";
 const Dashboard = (props) => {
   const { products, siparis } = props;
-
+  const router = useRouter();
+  const mysiparis = siparis.sort((item1, item2) => {
+    if (item1.status === "SUCCESS" && item2.status !== "SUCCESS") {
+      return -1; // item1'i item2'den önce sırala
+    } else if (item1.status !== "SUCCESS" && item2.status === "SUCCESS") {
+      return 1; // item2'yi item1'den önce sırala
+    } else {
+      return 0; // Değişiklik yapma, sıralama düzenini değiştirme
+    }
+  });
+  console.log(mysiparis);
   return (
     <>
       <div className="relative">
@@ -37,7 +48,7 @@ const Dashboard = (props) => {
                       Toplam Satışlar
                     </h5>
                     <span className="font-semibold text-xl ">
-                      12{/* {siparis?.length} */}
+                      {siparis?.length}
                     </span>
                   </div>
                 </div>
@@ -53,7 +64,10 @@ const Dashboard = (props) => {
                       Bekleyen Satışlar
                     </h5>
                     <span className="font-semibold text-xl text-blueGray-700">
-                      15
+                      {
+                        siparis?.filter((item) => item?.status === "SUCCESS")
+                          ?.length
+                      }
                     </span>
                   </div>
                 </div>
@@ -106,7 +120,11 @@ const Dashboard = (props) => {
               .sort((a, b) => b.sells - a.sells)
               .slice(0, 5)
               .map((item) => (
-                <tr key={item?.id}>
+                <tr
+                  key={item?.id}
+                  className="hover:bg-slate-200 cursor-pointer h-12"
+                  onClick={() => router.push(`/admin/product/${item?.id}`)}
+                >
                   <th className="px-6 align-middle text-xs whitespace-nowrap p-2 text-left flex items-center">
                     <Image
                       src={item?.images[0]?.imageurl}
@@ -131,7 +149,7 @@ const Dashboard = (props) => {
           </tbody>
         </table>
       </div>
-      <div className="block w-full overflow-x-auto bg-white shadow-2xl">
+      <div className="block w-full overflow-x-auto bg-white shadow-2xl  mb-12">
         {/* Projects table */}
         <div className="bg-[#F8FAFC] px-6 py-3 font-extrabold text-yellow-400">
           Son Satışlar
@@ -144,7 +162,14 @@ const Dashboard = (props) => {
                   "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-[#F8FAFC] text-[#64748B] "
                 }
               >
-                Satış Id
+                ID
+              </th>
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-[#F8FAFC] text-[#64748B] "
+                }
+              >
+                Satış ID
               </th>
               <th
                 className={
@@ -163,31 +188,40 @@ const Dashboard = (props) => {
             </tr>
           </thead>
           <tbody>
-            {products
-              .sort((a, b) => b.sells - a.sells)
-              .slice(0, 5)
-              .map((item) => (
-                <tr key={item?.id}>
-                  <th className="px-6 align-middle text-xs whitespace-nowrap text-left flex items-center p-2">
-                    <Image
-                      src={item?.images[0]?.imageurl}
-                      alt="Ürünler"
-                      width={150}
-                      height={150}
-                      className="w-12 h-12 object-contain"
-                      loading="eager"
-                    />
-                  </th>
-                  <td className="px-6 align-middle text-xs whitespace-nowrap p-2">
-                    {item?.name}
-                  </td>
-                  <td className="px-6 align-middle text-xs whitespace-nowrap p-2">
-                    <div className="flex gap-2">
-                      <CiCircleCheck color="green" size={16} /> Başarılı
+            {mysiparis.slice(0, 8).map((item) => (
+              <tr
+                key={item?.id}
+                className="hover:bg-slate-200 cursor-pointer h-12"
+                onClick={() => router.push(`/admin/orders/${item?.id}`)}
+              >
+                <th className="px-6 align-middle text-xs whitespace-nowrap text-left  p-2 text-blue-600">
+                  #{item?.id}
+                </th>
+                <td className="px-6 align-middle text-xs whitespace-nowrap p-2">
+                  #{item?.paymentId}
+                </td>
+                <td className="px-6 align-middle text-xs whitespace-nowrap p-2">
+                  {item?.basket[0]?.name}
+                </td>
+                <td className="px-6 align-middle text-xs whitespace-nowrap p-2 text-left">
+                  {item?.status === "SUCCESS" && (
+                    <div className="flex justify-start gap-2">
+                      <CiCircleQuestion color="blue" size={16} /> Beklemede
                     </div>
-                  </td>
-                </tr>
-              ))}
+                  )}
+                  {item?.status === "SEND" && (
+                    <div className="flex justify-start gap-2">
+                      <CiCircleCheck color="green" size={16} /> Gönderildi
+                    </div>
+                  )}
+                  {item?.status === "ERROR" && (
+                    <div className="flex justify-start gap-2">
+                      <CiCircleAlert color="red" size={16} /> HATA VAR
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

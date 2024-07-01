@@ -125,26 +125,15 @@ const OdemeClient = (props) => {
                     </div>
                     <div className="w-full h-[1px] bg-[#EDEDED]"></div>
 
-                    <div className="mt-[30px]">
-                      <div className=" flex justify-between mb-5">
-                        <p className="text-[13px] font-medium text-qblack uppercase">
-                          TOPLAM
-                        </p>
-                        <p className="text-[15px] font-medium text-qblack uppercase">
-                          {cartTotal()}₺
-                        </p>
-                      </div>
-                    </div>
-
                     <div className="w-full mt-[30px]">
                       <div className="sub-total mb-6">
                         <div className=" flex justify-between mb-5">
                           <div>
-                            <span className="text-xs text-qgraytwo mb-3 block">
+                            <span className="text-base font-medium text-qblack">
                               Kargo
                             </span>
-                            <p className="text-base font-medium text-qblack">
-                              Bedava Kargo
+                            <p className="text-xs text-qgraytwo mb-3 block">
+                              Ücretsiz Kargo
                             </p>
                           </div>
                           <p className="text-[15px] font-medium text-qblack">

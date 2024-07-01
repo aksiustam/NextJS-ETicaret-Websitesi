@@ -31,7 +31,7 @@ export default function Sidebar() {
           </button>
           {/* Brand */}
           <Link
-            href="/"
+            href="/admin"
             className="md:flex text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
           >
             <GiButterflyKnife size={28} color="black" />
@@ -55,7 +55,7 @@ export default function Sidebar() {
               <div className="flex flex-wrap">
                 <div className="w-6/12">
                   <Link
-                    href="/"
+                    href="/admin"
                     className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                   >
                     Admin Paneli
