@@ -458,7 +458,7 @@ const Invoicemail = ({ sipdata }) => {
                                     border: "none",
                                   }}
                                 >
-                                  KDV'siz Fiyat:
+                                  KDV&apos;siz Fiyat:
                                 </td>
                                 <td
                                   style={{

@@ -31,7 +31,7 @@ export default function SifreClient({ user }) {
     }
   };
   return (
-    <div className="changePasswordTab w-full">
+    <div className="changePasswordTab w-full mt-8 md:mt-0">
       <div className="w-full flex xl:flex-row flex-col-reverse space-x-5 xl:items-center">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-[397px] mb-10">

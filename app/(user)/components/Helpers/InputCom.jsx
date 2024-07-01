@@ -29,7 +29,7 @@ export default function InputCom({
           <span className="text-red-600">{myerror}</span>
         </label>
       )}
-      <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative">
+      <div className="input-wrapper border border-qgray-border w-full h-fit overflow-hidden relative">
         <input
           placeholder={placeholder}
           value={value}

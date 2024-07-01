@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 
 import Image from "next/image";
 import UseCart from "@/hooks/useCart";
+import ThinPeople from "../Helpers/icons/ThinPeople";
 export default function Header({ className, drawerAction, user, category }) {
   const { basket } = UseCart();
   return (
@@ -39,17 +40,26 @@ export default function Header({ className, drawerAction, user, category }) {
               />
             </Link>
           </div>
-          <div className="cart relative cursor-pointer mr-4">
-            <Link href="/sepet">
-              <span>
-                <ThinBag />
+          <div className="flex gap-3 items-center justify-center">
+            <div className="cart relative cursor-pointer mr-4">
+              <Link href="/sepet">
+                <span>
+                  <ThinBag />
+                </span>
+              </Link>
+              <span
+                className={`w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-qyellow text-qblack`}
+              >
+                {basket?.length}
               </span>
-            </Link>
-            <span
-              className={`w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-qyellow text-qblack`}
-            >
-              {basket?.length}
-            </span>
+            </div>
+            <div>
+              <Link href={user !== null ? "/hesabim" : "/login"}>
+                <span>
+                  <ThinPeople />
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

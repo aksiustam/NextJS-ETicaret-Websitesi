@@ -11,7 +11,13 @@ import setRegister from "../../../actions/Auth/setRegister";
 import verifyCode from "../../../actions/Auth/verifyCode";
 import resendCode from "../../../actions/Auth/resendCode";
 import { signIn } from "next-auth/react";
+import "react-phone-number-input/style.css";
+import dynamic from "next/dynamic";
 
+// PhoneInput bileşenini dinamik olarak yükle
+const PhoneInput = dynamic(() => import("react-phone-number-input"), {
+  ssr: false,
+});
 const RegisterClient = () => {
   const [error, setError] = useState("");
   const [verify, setVerify] = useState(false);
@@ -19,6 +25,10 @@ const RegisterClient = () => {
   const [code, setCode] = useState("");
   const [formerror, setFormError] = useState("");
   const [clicked, setClicked] = useState(false);
+  const [tel, setTel] = useState(null);
+  const [abone, setAbone] = useState(false);
+  const [kvkcheck, setKvkCheck] = useState(false);
+  const [telerror, setTelError] = useState(null);
   const router = useRouter();
   const {
     register,
@@ -28,7 +38,15 @@ const RegisterClient = () => {
 
   const onSubmit = async (data) => {
     try {
-      const mydata = { ...data, checked: true };
+      if (tel === null) {
+        setTelError("Telefon Numarası Giriniz");
+        return;
+      }
+      if (kvkcheck === false) {
+        setError("Üyelik sözleşmemizi kabul edin!");
+        return;
+      }
+      const mydata = { ...data, tel: tel, checked: abone };
       const res = await setRegister(mydata);
       if (res === true) {
         setFormData(mydata);
@@ -212,7 +230,7 @@ const RegisterClient = () => {
                   {error && error}
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 space-y-5 sm:space-y-0 sm:gap-3 mb-5">
                     <InputCom
                       placeholder="Adınız"
                       label="Adınız*"
@@ -235,35 +253,49 @@ const RegisterClient = () => {
                       required="Soyadınızı Giriniz"
                     />
                   </div>
-                  <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-5">
-                    <InputCom
-                      placeholder="deneme@gmail.com"
-                      label="Email*"
-                      name="email"
-                      type="email"
-                      inputClasses="!h-[50px]"
-                      errors={errors}
-                      register={register}
-                      required="E-mail Giriniz"
-                      pattern={{
-                        value:
-                          /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
-                        message: "Doğru Email Giriniz",
-                      }}
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 space-y-5 sm:space-y-0 sm:gap-3 mb-5">
+                    <div className="w-full h-full">
+                      <InputCom
+                        placeholder="deneme@gmail.com"
+                        label="Email*"
+                        name="email"
+                        type="email"
+                        inputClasses="!h-[50px]"
+                        errors={errors}
+                        register={register}
+                        required="E-mail Giriniz"
+                        pattern={{
+                          value:
+                            /^[A-Z0-9._%+-]{3,}@(hotmail|gmail|yahoo|outlook|aol|icloud|zoho|protonmail|gmx|yandex|mail|tutanota|fastmail|hushmail|lycos|rackspace|zimbra|squirrelmail|roundcube|163|qq)\.(com|net|org|edu)$/i,
+                          message: "Doğru Email Giriniz",
+                        }}
+                      />
+                    </div>
+                    <div className="input-com w-full h-full">
+                      <label
+                        className={`text-qgray text-[13px] font-normal input-label capitalize block mb-2 `}
+                      >
+                        Telefon*
+                        <span className="text-red-600">
+                          {telerror !== null && telerror}
+                        </span>
+                      </label>
 
-                    <InputCom
-                      placeholder="0555 *********"
-                      label="Telefon*"
-                      name="tel"
-                      type="text"
-                      inputClasses="!h-[50px]"
-                      errors={errors}
-                      register={register}
-                      required="Telefon Giriniz"
-                    />
+                      <div className="input-wrapper border border-qgray-border w-full h-fit overflow-hidden relative">
+                        <PhoneInput
+                          id="phone"
+                          international="false"
+                          countries={["TR"]}
+                          defaultCountry="TR"
+                          className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
+                          value={tel}
+                          maxLength={18}
+                          onChange={setTel}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-5">
+                  <div className="grid grid-cols-1 space-y-5 sm:space-y-0 sm:gap-3 mb-5">
                     <InputCom
                       placeholder="* * * * * "
                       label="Şifre*"
@@ -284,11 +316,11 @@ const RegisterClient = () => {
                   <div className="forgot-password-area mb-7">
                     <div className="remember-checkbox flex items-center space-x-2.5">
                       <button
-                        onClick={() => console.log("HEY")}
+                        onClick={() => setAbone((prev) => !prev)}
                         type="button"
                         className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
                       >
-                        {true && (
+                        {abone && (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -304,7 +336,7 @@ const RegisterClient = () => {
                         )}
                       </button>
                       <span
-                        onClick={() => console.log("HEY")}
+                        onClick={() => setAbone((prev) => !prev)}
                         className="text-base text-black"
                       >
                         <span className="text-qblack">
@@ -314,11 +346,11 @@ const RegisterClient = () => {
                     </div>
                     <div className="remember-checkbox flex items-center space-x-2.5">
                       <button
-                        onClick={() => console.log("HEY")}
+                        onClick={() => setKvkCheck((prev) => !prev)}
                         type="button"
                         className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
                       >
-                        {true && (
+                        {kvkcheck && (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -334,10 +366,14 @@ const RegisterClient = () => {
                         )}
                       </button>
                       <span
-                        onClick={() => console.log("HEY")}
+                        onClick={() => setKvkCheck((prev) => !prev)}
                         className="text-base text-black"
                       >
-                        <span className="text-qblack">Üyelik sözleşmesini</span>{" "}
+                        <span className="text-blue-600">
+                          <Link href={"/kurumsal/gizlilik-cerez-politikasi"}>
+                            Üyelik sözleşmesini
+                          </Link>
+                        </span>{" "}
                         okudum, kabul ediyorum.
                       </span>
                     </div>

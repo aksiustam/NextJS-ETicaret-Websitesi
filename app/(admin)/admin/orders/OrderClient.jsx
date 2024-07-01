@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 const OrderClient = (props) => {
   const siparis = props.siparis;
-  console.log(siparis);
+
   const [search, setSearch] = useState("");
   const router = useRouter();
 
@@ -225,7 +225,23 @@ const OrderClient = (props) => {
                           </Link>
                         </Cell>
                         <Cell>{item?.basket[0]?.name}</Cell>
-                        <Cell>{item?.paymentStatus}</Cell>
+                        <Cell>
+                          {item?.status === "SUCCESS" && (
+                            <span className="text-sm rounded text-blue-500 bg-blue-100 p-2">
+                              Beklemede
+                            </span>
+                          )}
+                          {item?.status === "SEND" && (
+                            <span className="text-sm rounded text-green-500 bg-green-100 p-2">
+                              Gönderildi
+                            </span>
+                          )}
+                          {item?.status === "ERROR" && (
+                            <span className="text-sm rounded text-red-500 bg-red-100 p-2">
+                              Hata Var
+                            </span>
+                          )}
+                        </Cell>
                         <Cell>{item?.sendmail || "Başarılı"}</Cell>
                         <Cell>
                           <span className="text-wrap">{time}</span>

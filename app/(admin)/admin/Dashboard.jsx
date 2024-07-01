@@ -17,7 +17,7 @@ const Dashboard = (props) => {
       return 0; // Değişiklik yapma, sıralama düzenini değiştirme
     }
   });
-  console.log(mysiparis);
+
   return (
     <>
       <div className="relative">

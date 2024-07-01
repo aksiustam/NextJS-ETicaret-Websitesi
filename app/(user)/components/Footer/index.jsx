@@ -25,9 +25,9 @@ export default function Footer() {
         </div>
         <div className="lg:flex justify-between mb-[50px]">
           <div className="lg:w-[424px]  ml-0 w-full mb-10 lg:mb-0">
-            <h4 className="text-[18] font-500 text-[#2F2F2F] mb-5">
+            <h6 className="text-[18] font-500 text-[#2F2F2F] mb-5">
               Hakkımızda
-            </h4>
+            </h6>
             <p className="text-[#9A9A9A] text-[15px] w-[247px] leading-[28px]">
               Bıçakcı Serkan Model ve Süs Bıçakları , Tesbihler ve Hediyelik
               Eşya Satış Mağazası

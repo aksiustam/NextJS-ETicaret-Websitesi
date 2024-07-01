@@ -17,7 +17,7 @@ export default async function Home() {
       <Banner settings={settings} allcategory={allcategory} />
       <ViewMoreTitle
         className="my-categories mb-[60px]"
-        categoryTitle="Bıçakcı Serkan Ürünleri"
+        categoryTitle="Kategorilerimiz"
       >
         <CategoriesSection allcategory={allcategory} />
       </ViewMoreTitle>

@@ -29,7 +29,7 @@ export default function ProductsFilter({
       >
         <div className="filter-subject-item pb-10 border-b border-qgray-border">
           <div className="subject-title mb-[30px]">
-            <h4 className="text-black text-base font-500">Kategoriler</h4>
+            <div className="text-black text-base font-500">Kategoriler</div>
           </div>
           <div className="filter-items">
             <ul>
@@ -77,7 +77,7 @@ export default function ProductsFilter({
         </div>
         <div className="filter-subject-item pb-10 border-b border-qgray-border mt-10">
           <div className="subject-title mb-[30px]">
-            <h4 className="text-black text-base font-500">Fiyat Aralığı</h4>
+            <div className="text-black text-base font-500">Fiyat Aralığı</div>
           </div>
           <div className="price-range mb-5">
             <RangeSlider

@@ -71,7 +71,7 @@ const LoginClient = () => {
         setClicked(true);
         localStorage.setItem("lastClickedTime", Date.now().toString());
         const res = await forgotPass(email);
-        console.log(res);
+
         if (res === true) {
           setModalError(
             "Geçici şifreniz e-posta kutunuza gelmiştir. Bunu istediğiniz zaman profilinizde değiştirebilirsiniz."

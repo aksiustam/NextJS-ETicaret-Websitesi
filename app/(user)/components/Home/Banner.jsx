@@ -27,11 +27,8 @@ export default function Banner({ className, settings, allcategory }) {
       <div className={`w-full ${className || ""}`}>
         <div className="container-x mx-auto">
           <div className="main-wrapper w-full">
-            <div className="banner-card flex items-center justify-center xl:space-x-[30px] xl:h-[620px]  mb-[30px]">
-              <div
-                data-aos="fade-right"
-                className="w-1/2 flex xl:flex-col flex-row xl:space-y-[30px] h-full relative"
-              >
+            <div className="banner-card grid grid-cols-1 lg:grid-cols-2 gap-3 xl:h-[630px] mb-[30px]">
+              <div data-aos="fade-right" className="w-full mb-4 relative">
                 <Slider {...slidersettings}>
                   <Link href={`/${category[0]?.slug}`}>
                     <Image
@@ -55,11 +52,8 @@ export default function Banner({ className, settings, allcategory }) {
                   </Link>
                 </Slider>
               </div>
-              <PhotoProvider>
-                <div
-                  data-aos="fade-left"
-                  className="w-1/2 flex xl:flex-col flex-row  xl:space-y-[30px] h-full relative"
-                >
+              <div data-aos="fade-left" className="w-full relative">
+                <PhotoProvider>
                   <Slider {...slidersettings}>
                     {images.map((item, index) => (
                       <PhotoView
@@ -77,8 +71,18 @@ export default function Banner({ className, settings, allcategory }) {
                       </PhotoView>
                     ))}
                   </Slider>
-                </div>
-              </PhotoProvider>
+                </PhotoProvider>
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-full flex items-center justify-center mb-6">
+            <div
+              className="px-4 py-2 bg-gray-50 shadow rounded"
+              data-aos="fade-top"
+            >
+              <h1 className="text-2xl font-bold text-[#ffee00] text-center text-shadow-xl">
+                Bıçakcı Serkan Av ve Bıçak Hediyelik Kullanımlık Ürünler
+              </h1>
             </div>
           </div>
         </div>

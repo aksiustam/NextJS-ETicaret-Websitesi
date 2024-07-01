@@ -10,6 +10,7 @@ const page = async ({ params }) => {
   const { token } = params;
 
   const siparis = await getOrderToken(token);
+
   return <OdemeFaturaClient sipdata={siparis} />;
 };
 

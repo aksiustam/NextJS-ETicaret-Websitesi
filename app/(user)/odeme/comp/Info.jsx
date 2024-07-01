@@ -123,14 +123,14 @@ const Info = (props) => {
     if (valueadress.adressname.length < 2) {
       setModalError({
         name: "adressname",
-        msg: "Adress Adı Giriniz",
+        msg: "Adres Adı Giriniz",
       });
       return;
     }
     if (valueadress.address.length < 10) {
       setModalError({
         name: "address",
-        msg: "Uygun Bir Adress Girin",
+        msg: "Uygun Bir Adres Girin",
       });
       return;
     }
@@ -203,7 +203,7 @@ const Info = (props) => {
                   <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ">
                     <div className="flex items-start justify-between p-5 border-b border-solid rounded-t">
                       <h3 className="text-xl font-semibold">
-                        Adress Ekle/Değiştir
+                        Adres Ekle/Değiştir
                       </h3>
                       <button
                         className="p-1 ml-auto bg-transparent border-0 text-black  float-right text-xl leading-none font-semibold outline-none focus:outline-none"
@@ -229,7 +229,7 @@ const Info = (props) => {
                       <div className="flex flex-col flex-wrap">
                         <div className="mb-6 flex gap-3">
                           <InputCom
-                            label="Adress Adı*"
+                            label="Adres Adı*"
                             name="adressname"
                             type="text"
                             inputClasses="!h-[50px]"
@@ -372,7 +372,7 @@ const Info = (props) => {
                         </div>
                         <div className="mb-6">
                           <h6 className=" text-qgray capitalize text-[13px] font-normal block">
-                            Adress*{" "}
+                            Adres*{" "}
                             <span className="text-red-600">
                               {modalerror.name === "address"
                                 ? modalerror.msg
@@ -380,7 +380,7 @@ const Info = (props) => {
                             </span>
                           </h6>
                           <textarea
-                            placeholder="Adress..."
+                            placeholder="Adres..."
                             name="address"
                             className="w-full h-[105px] text-sm focus:ring-0 focus:outline-none p-3 border border-qgray-border placeholder:text-sm"
                             value={valueadress.address}
@@ -490,7 +490,7 @@ const Info = (props) => {
               />
             </div>
           </div>
-          <div className="flex space-x-5 items-center mb-6">
+          <div className="sm:flex sm:space-x-5 items-center mb-6">
             <div className="w-1/2">
               <InputCom
                 label="Email Adresi*"
@@ -513,13 +513,13 @@ const Info = (props) => {
                   </span>
                 </label>
 
-                <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative">
+                <div className="input-wrapper border border-qgray-border w-full h-fit overflow-hidden relative">
                   <PhoneInput
                     id="phone"
                     international="false"
                     countries={["TR"]}
                     defaultCountry="TR"
-                    className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
+                    className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
                     value={tel}
                     maxLength={18}
                     onChange={setTel}
@@ -545,7 +545,7 @@ const Info = (props) => {
             />
           </div>
           <div className="mb-6 flex">
-            <h5 className="mb-2 font-bold">Adress</h5>
+            <div className="mb-2 font-bold">Adres</div>
             <div className="flex w-full justify-between mr-3 items-center mb-4">
               <span className="text-red-600">
                 {formerror.name === "address" ? formerror.msg : ""}
@@ -573,9 +573,9 @@ const Info = (props) => {
             {checkbill === true && (
               <>
                 <div className="bg-slate-100 pb-4 px-4">
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="py-4 font-semibold col-span-2">
-                      Teslimat Adressi
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                    <div className="py-4 font-semibold md:col-span-2">
+                      Teslimat Adresi
                     </div>
                     {user && user !== null && user?.Address?.length < 4 && (
                       <div
@@ -586,7 +586,7 @@ const Info = (props) => {
                       >
                         <FaPlus size={26} />
                         <span className="font-semibold text-center">
-                          Teslimat Adressi <br /> Ekleyin
+                          Teslimat Adresi <br /> Ekleyin
                         </span>
                       </div>
                     )}
@@ -599,7 +599,7 @@ const Info = (props) => {
                       >
                         <FaPlus size={26} />
                         <span className="font-semibold text-center">
-                          Teslimat Adressi <br /> Ekleyin/Değiştirin
+                          Teslimat Adresi <br /> Ekleyin/Değiştirin
                         </span>
                       </div>
                     )}
@@ -668,12 +668,12 @@ const Info = (props) => {
             {checkbill === false && (
               <>
                 <div className=" bg-slate-100 py-4 px-4">
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="font-semibold pb-4">Teslimat Adressi</div>
-                    <div className="font-semibold pb-4 hidden lg:block ">
-                      Fatura Adressi
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                    <div className="font-semibold pb-4">Teslimat Adresi</div>
+                    <div className="font-semibold pb-4 hidden md:block ">
+                      Fatura Adresi
                     </div>
-                    <div className="border-b-[2.5px] border-blue-600 mb-2 lg:mb-0 lg:border-b-0    ">
+                    <div className="w-full border-b-[2.5px] border-blue-600 mb-2 md:mb-0 md:border-b-0    ">
                       <div className="flex flex-col gap-2">
                         {user && user !== null && user?.Address?.length < 4 && (
                           <div
@@ -684,7 +684,7 @@ const Info = (props) => {
                           >
                             <FaPlus size={26} />
                             <span className="font-bold">
-                              Yeni Bir Adress Ekleyin
+                              Yeni Bir Adres Ekleyin
                             </span>
                           </div>
                         )}
@@ -765,7 +765,7 @@ const Info = (props) => {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <div className="block lg:hidden font-bold pb-4">
+                      <div className="block md:hidden font-bold pb-4">
                         <div className="w-full">Fatura Adresi</div>
                       </div>
                       <div className="flex flex-col gap-2">
@@ -778,7 +778,7 @@ const Info = (props) => {
                           >
                             <FaPlus size={26} />
                             <span className="font-bold">
-                              Yeni Bir Adress Ekleyin
+                              Yeni Bir Adres Ekleyin
                             </span>
                           </div>
                         )}
@@ -861,9 +861,9 @@ const Info = (props) => {
             )}
           </div>
           <div className="mb-6">
-            <h6 className=" text-qgray capitalize text-[13px] font-normal block">
+            <div className=" text-qgray capitalize text-[13px] font-normal block">
               Not*
-            </h6>
+            </div>
             <textarea
               placeholder="Mesaj..."
               name="not"

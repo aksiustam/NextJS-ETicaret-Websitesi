@@ -531,7 +531,7 @@ const OrderSuccess = React.forwardRef(function OrderSuccess(props, ref) {
                                     border: "none",
                                   }}
                                 >
-                                  KDV'siz Fiyat:
+                                  KDV&apos;siz Fiyat:
                                 </td>
                                 <td
                                   style={{

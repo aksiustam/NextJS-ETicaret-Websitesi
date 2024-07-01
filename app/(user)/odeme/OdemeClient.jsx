@@ -65,7 +65,7 @@ const OdemeClient = (props) => {
         <div className="checkout-page-wrapper w-full bg-white pb-[60px]">
           <div className="w-full mb-5">
             <PageTitle
-              title="Checkout"
+              title="Ödeme Sayfası"
               breadcrumb={[
                 { name: "Anasayfa", path: "/" },
                 { name: "Ödeme", path: "/odeme" },
@@ -81,9 +81,9 @@ const OdemeClient = (props) => {
                 </div>
 
                 <div className="flex-1">
-                  <h1 className="sm:text-2xl text-xl text-qblack font-medium mb-5">
+                  <h2 className="sm:text-lg text-sm text-qblack font-medium mb-5">
                     Ödeme Özeti
-                  </h1>
+                  </h2>
 
                   <div className="w-full px-10 py-[30px] border border-[#EDEDED]">
                     <div className="sub-total mb-6">

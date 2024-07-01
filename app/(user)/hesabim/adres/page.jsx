@@ -8,7 +8,7 @@ const page = async () => {
   if (user !== null) {
     return (
       <ProfilLayout>
-        <AdressClient />
+        <AdressClient user={user} />
       </ProfilLayout>
     );
   } else {

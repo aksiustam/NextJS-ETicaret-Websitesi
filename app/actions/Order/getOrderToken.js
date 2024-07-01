@@ -13,6 +13,7 @@ export default async function getOrderToken(token) {
           id: parseInt(request.id),
         },
       });
+
       setTimeout(() => {
         orderbillRequest.delete(token);
       }, 3600000);
@@ -21,13 +22,6 @@ export default async function getOrderToken(token) {
     } else {
       return null;
     }
-
-    // const siparis = await prisma.SiparisOrderFinish.findUnique({
-    //   where: {
-    //     id: parseInt(31),
-    //   },
-    // });
-    // return siparis;
   } catch (error) {
     throw new Error(error);
   }

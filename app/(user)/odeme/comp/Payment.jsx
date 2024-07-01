@@ -16,12 +16,9 @@ const Payment = (props) => {
           setMessage("Sepetiniz Boş");
           return;
         }
-        console.log(user);
-        console.log(userInfo);
-        console.log(basket);
+
         const res = await createOrder(user, userInfo, basket);
 
-        console.log(res);
         if (res?.status === "success") {
           const checkoutFormContent = res.checkoutFormContent;
 
@@ -62,7 +59,10 @@ const Payment = (props) => {
   return (
     <>
       <div className="order_review bg-white">
-        <div className="payment_method tw-flex tw-flex-col tw-items-center tw-justify-center">
+        <div className="payment_method flex flex-col items-center justify-center mb-12 md:mb-0">
+          <div className="text-sm text-center text-red-600">
+            {message && message}
+          </div>
           {basket.length > 0 && (
             <>
               <div

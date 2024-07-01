@@ -39,7 +39,7 @@ const SepetPageClient = () => {
         <div className="cart-page-wrapper w-full bg-white pb-[60px]">
           <div className="w-full">
             <PageTitle
-              title="Sepetiniz"
+              title="Alışveriş Sepetiniz"
               breadcrumb={[
                 { name: "Anasayfa", path: "/" },
                 { name: "Sepet", path: "/sepet" },

@@ -211,9 +211,9 @@ export default function ProfilClient({ user }) {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col space-x-8">
-            <div className="w-full ">
-              <div className="input-item flex space-x-2.5 mb-8">
-                <div className="w-1/2 h-full">
+            <div className="w-full flex flex-col sm:block mt-6 md:mt-0">
+              <div className="input-item flex flex-col md:flex-row md:space-x-2.5 mb-0 md:mb-8">
+                <div className="w-full md:w-1/2 mb-8 md:mb-0">
                   <InputCom
                     label="Adınız*"
                     type="text"
@@ -223,7 +223,7 @@ export default function ProfilClient({ user }) {
                     register={register}
                   />
                 </div>
-                <div className="w-1/2 h-full">
+                <div className="w-full md:w-1/2 mb-8 md:mb-0">
                   <InputCom
                     label="Soyadınız*"
                     type="text"
@@ -234,8 +234,8 @@ export default function ProfilClient({ user }) {
                   />
                 </div>
               </div>
-              <div className="input-item flex space-x-2.5 mb-8">
-                <div className="w-1/2 h-full">
+              <div className="input-item flex flex-col md:flex-row md:space-x-2.5 mb-0 md:mb-8">
+                <div className="w-full md:w-1/2 mb-8 md:mb-0">
                   <InputCom
                     label="Email*"
                     type="email"
@@ -250,7 +250,7 @@ export default function ProfilClient({ user }) {
                     }}
                   />
                 </div>
-                <div className="w-1/2 h-full">
+                <div className="w-full md:w-1/2 mb-8 md:mb-0">
                   <div className="input-com w-full h-full">
                     <label
                       className={`text-qgray text-[13px] font-normal input-label capitalize block mb-2 `}
@@ -258,13 +258,13 @@ export default function ProfilClient({ user }) {
                       Telefon*
                     </label>
 
-                    <div className="input-wrapper border border-qgray-border w-full h-full overflow-hidden relative">
+                    <div className="input-wrapper border border-qgray-border w-full h-fit overflow-hidden relative">
                       <PhoneInput
                         id="phone"
                         international="false"
                         countries={["TR"]}
                         defaultCountry="TR"
-                        className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
+                        className="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none !h-[50px]"
                         value={tel}
                         maxLength={18}
                         onChange={setTel}
@@ -273,7 +273,7 @@ export default function ProfilClient({ user }) {
                   </div>
                 </div>
               </div>
-              <div className="input-item flex space-x-2.5 mb-8">
+              <div className="input-item flex space-x-2.5 mb-0 md:mb-8">
                 <div className="w-1/2 h-full">
                   <InputCom
                     label="TC Kimlik No*"

@@ -73,7 +73,6 @@ const SubCategoryTable = (props) => {
         imageurl: image?.secure_url || undefined,
       };
 
-      console.log(formData);
       const res = await setAllCategory("subcat", formData);
       if (res === true) {
         await Swal.fire({

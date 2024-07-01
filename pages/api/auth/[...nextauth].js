@@ -38,7 +38,6 @@ export const authOptions = {
           throw new Error("Şifreniz Yanlış!");
         }
 
-        console.log(user);
         return user;
       },
     }),

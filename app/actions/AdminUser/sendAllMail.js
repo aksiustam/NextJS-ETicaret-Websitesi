@@ -55,37 +55,6 @@ export default async function sendAllMail(formData) {
       });
     });
 
-    // if (mailto === "news") {
-    //   const user = await prisma.NewsMail.findMany();
-
-    //   user.forEach((item) => {
-    //     mailOptions.to = item.email;
-
-    //     transporter.sendMail(mailOptions, (error, info) => {
-    //       if (error) {
-    //         console.log("E-posta gönderilirken hata oluştu:", error);
-    //       } else {
-    //         console.log("E-posta başarıyla gönderildi:", info.response);
-    //       }
-    //     });
-    //   });
-    // }
-    // if (mailto === "stock") {
-    //   const user = await prisma.StockMail.findMany();
-
-    //   user.forEach((item) => {
-    //     mailOptions.to = item.email;
-
-    //     transporter.sendMail(mailOptions, (error, info) => {
-    //       if (error) {
-    //         console.log("E-posta gönderilirken hata oluştu:", error);
-    //       } else {
-    //         console.log("E-posta başarıyla gönderildi:", info.response);
-    //       }
-    //     });
-    //   });
-    // }
-
     return true;
   } catch (error) {
     throw new Error(error);

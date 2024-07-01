@@ -100,6 +100,11 @@ export default function ShopClient({ allcategory, data, products }) {
             </div>
 
             <div className="flex-1">
+              <div className="mb-3">
+                <h1 className="text-lg text-shadow-md font-bold ">
+                  {data?.category?.name}
+                </h1>
+              </div>
               {subdata?.length > 0 && (
                 <div className="products-sorting w-full bg-white md:h-[110px] flex space-x-4 items-center p-[25px] mb-[5px] overflow-x-scroll overflow-y-hidden  md:overflow-hidden">
                   {subdata?.map((item) => (
@@ -136,7 +141,7 @@ export default function ShopClient({ allcategory, data, products }) {
                           className={`w-full h-full rounded-full object-contain `}
                         />
                       </div>
-                      <div className="text-xs truncate pt-1">{item?.name}</div>
+                      <h2 className="text-xs truncate pt-1">{item?.name}</h2>
                     </div>
                   ))}
                 </div>

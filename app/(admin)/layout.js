@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Next Admin Knife",
+  title: "Admin Bıçakcı Serkan",
   description: "Bıçakcı Serkan Bıçak Malzemeleri",
   robots: {
     index: false,

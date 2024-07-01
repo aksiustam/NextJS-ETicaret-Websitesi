@@ -33,5 +33,5 @@ module.exports = {
       borderStyle: ["last"],
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-textshadow")],
 };

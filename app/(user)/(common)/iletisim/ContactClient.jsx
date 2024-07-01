@@ -148,7 +148,7 @@ const ContactClient = () => {
                   </span>
                   <div>
                     <h1 className="text-[22px] font-semibold text-qblack leading-[30px] mb-2">
-                      Adress
+                      Adres
                     </h1>
                     <p className="text-[15px] text-qblack leading-[30px]">
                       Erenler, Kazdağı Sk. 7bb, 42050 Karatay/Konya
