@@ -110,7 +110,7 @@ const IndirimYeriClient = (props) => {
               label="Banner Üst*"
               name="bannerUst"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -120,7 +120,7 @@ const IndirimYeriClient = (props) => {
               label="Banner Alt*"
               name="bannerAlt"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -130,7 +130,7 @@ const IndirimYeriClient = (props) => {
               label="Button Adı*"
               name="buttonName"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -140,7 +140,7 @@ const IndirimYeriClient = (props) => {
               label="Button Url*"
               name="buttonUrl"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -155,7 +155,7 @@ const IndirimYeriClient = (props) => {
                 name="checkbox"
                 id="indirim_etkin"
                 {...register("checkbox")}
-                className="h-[50px] text-sm px-6"
+                className="!h-[50px] text-sm px-6"
               >
                 <option value="false">Hayır</option>
                 <option value="true">Evet</option>
@@ -171,7 +171,7 @@ const IndirimYeriClient = (props) => {
               <input
                 type="date"
                 id="product_available"
-                className="h-[50px] text-sm px-12"
+                className="!h-[50px] text-sm px-12"
                 {...register("date")}
               />
             </div>

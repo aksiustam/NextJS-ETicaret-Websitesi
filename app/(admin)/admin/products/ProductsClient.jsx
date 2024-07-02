@@ -54,8 +54,12 @@ const ProductsClient = (props) => {
   const data = { nodes: filteredData };
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
-  const theme = useTheme(materialTheme);
-
+  const theme = useTheme({
+    ...materialTheme,
+    Table: `
+      --data-table-library_grid-template-columns: repeat(9, 1fr);
+    `,
+  });
   const sort = useSort(
     data,
     {
@@ -69,6 +73,7 @@ const ProductsClient = (props) => {
       },
       sortToggleType: SortToggleType.AlternateWithReset,
       sortFns: {
+        STOCK: (array) => array.sort((a, b) => b.stock - a.stock),
         SELLS: (array) => array.sort((a, b) => b.sells - a.sells),
         CLICK: (array) => array.sort((a, b) => b.onclick - a.onclick),
         NAME: (array) => array.sort((a, b) => a?.name?.localeCompare(b?.name)),
@@ -296,8 +301,14 @@ const ProductsClient = (props) => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <div className="table">
-          <Table data={data} sort={sort} theme={theme} pagination={pagination}>
+        <div className="flex w-full overflow-x-scroll">
+          <Table
+            data={data}
+            sort={sort}
+            theme={theme}
+            pagination={pagination}
+            layout={{ custom: true, horizontalScroll: true }}
+          >
             {(tableList) => (
               <>
                 <Header>
@@ -323,6 +334,11 @@ const ProductsClient = (props) => {
                     <HeaderCellSort sortKey="YENI">
                       <span className="text-sm text-gray-600 text-center">
                         Yeni Ürünler
+                      </span>
+                    </HeaderCellSort>
+                    <HeaderCellSort sortKey="STOCK">
+                      <span className="text-sm text-gray-600 text-center">
+                        Stock Sayısı
                       </span>
                     </HeaderCellSort>
                     <HeaderCellSort sortKey="SELLS">
@@ -392,6 +408,7 @@ const ProductsClient = (props) => {
                             handleCheckChange={() => changeYeni(item?.id)}
                           />
                         </Cell>
+                        <Cell>{item?.stock || 0}</Cell>
                         <Cell>{item?.sells || 0}</Cell>
                         <Cell>{item?.onclick || 0}</Cell>
                         <Cell>

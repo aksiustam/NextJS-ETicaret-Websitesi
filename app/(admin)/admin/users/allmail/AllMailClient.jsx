@@ -45,7 +45,7 @@ const AllMailClient = () => {
               label="Tüm Kullanıcılara Gidecek Mail Başlık*"
               name="mailBaslik"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />

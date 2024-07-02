@@ -84,7 +84,7 @@ const AdminProductClient = (props) => {
               label="Ürün Adı*"
               name="name"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
               required="Ürün Adı Giriniz"
@@ -96,7 +96,7 @@ const AdminProductClient = (props) => {
               label="Açıklama*"
               name="desc"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
               required="Ürün Açıklaması Giriniz"
@@ -111,7 +111,7 @@ const AdminProductClient = (props) => {
               name="price"
               type="number"
               min={0.0}
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
               required="Ürün Fiyatı Giriniz"
@@ -126,6 +126,7 @@ const AdminProductClient = (props) => {
               min={0.0}
               errors={errors}
               register={register}
+              inputClasses="!h-[50px]"
               required="Ürün indirimli fiyatını Giriniz"
             />
           </div>
@@ -181,7 +182,7 @@ const AdminProductClient = (props) => {
               label="Stock Sayısı*"
               name="stock"
               type="number"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
               required="Stock Sayısı Giriniz"
@@ -210,7 +211,7 @@ const AdminProductClient = (props) => {
                 return (
                   <button
                     type="button"
-                    className="blue-btn inline-flex space-x-2 items-center mt-1"
+                    className="blue-btn inline-flex space-x-2 items-center mt-1 !h-[50px]"
                     onClick={handleOnClick}
                   >
                     Resim Yükle

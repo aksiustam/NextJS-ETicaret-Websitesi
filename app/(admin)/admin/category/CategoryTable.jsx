@@ -144,7 +144,7 @@ const CategoryTable = (props) => {
                           inputHandler={(e) =>
                             setModalCat({ ...modalcat, index: e.target.value })
                           }
-                          inputClasses="h-[50px]"
+                          inputClasses="!h-[50px]"
                         />
                       </div>
                       <div className="input-item mb-5 ">
@@ -156,7 +156,7 @@ const CategoryTable = (props) => {
                           inputHandler={(e) =>
                             setModalCat({ ...modalcat, name: e.target.value })
                           }
-                          inputClasses="h-[50px]"
+                          inputClasses="!h-[50px]"
                           required
                         />
                       </div>
@@ -171,7 +171,7 @@ const CategoryTable = (props) => {
                           inputHandler={(e) =>
                             setModalCat({ ...modalcat, desc: e.target.value })
                           }
-                          inputClasses="h-[50px]"
+                          inputClasses="!h-[50px]"
                           required
                         />
                       </div>
@@ -187,7 +187,7 @@ const CategoryTable = (props) => {
                               keywords: e.target.value,
                             })
                           }
-                          inputClasses="h-[50px]"
+                          inputClasses="!h-[50px]"
                           required
                         />
                       </div>
@@ -261,7 +261,7 @@ const CategoryTable = (props) => {
               type="number"
               min={0}
               inputHandler={(e) => setIndex(e.target.value)}
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               required
             />
           </div>
@@ -272,7 +272,7 @@ const CategoryTable = (props) => {
               name="name"
               type="text"
               inputHandler={(e) => setName(e.target.value)}
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               required
             />
           </div>
@@ -283,7 +283,7 @@ const CategoryTable = (props) => {
               name="desc"
               type="text"
               inputHandler={(e) => setDesc(e.target.value)}
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               required
             />
           </div>
@@ -294,7 +294,7 @@ const CategoryTable = (props) => {
               name="keywords"
               type="text"
               inputHandler={(e) => setKeywords(e.target.value)}
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               required
             />
           </div>

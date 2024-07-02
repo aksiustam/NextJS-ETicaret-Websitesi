@@ -51,8 +51,12 @@ const DiscProductsClient = (props) => {
   const data = { nodes: filteredData };
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
-  const theme = useTheme(materialTheme);
-
+  const theme = useTheme({
+    ...materialTheme,
+    Table: `
+      --data-table-library_grid-template-columns: repeat(9, 1fr);
+    `,
+  });
   const sort = useSort(
     data,
     {
@@ -332,8 +336,14 @@ const DiscProductsClient = (props) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="table">
-        <Table data={data} sort={sort} theme={theme} pagination={pagination}>
+      <div className="flex w-full overflow-x-scroll">
+        <Table
+          data={data}
+          sort={sort}
+          theme={theme}
+          pagination={pagination}
+          layout={{ custom: true, horizontalScroll: true }}
+        >
           {(tableList) => (
             <>
               <Header>

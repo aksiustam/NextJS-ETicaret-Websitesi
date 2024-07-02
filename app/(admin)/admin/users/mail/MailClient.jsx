@@ -46,7 +46,7 @@ const MailClient = () => {
               label="Kime Gidecek*"
               name="mailto"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -56,7 +56,7 @@ const MailClient = () => {
               label="Mail Başlık*"
               name="mailBaslik"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />

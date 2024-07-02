@@ -58,7 +58,7 @@ const DiscUpClient = (props) => {
               label="İndirim 1 %Yüzde*"
               name="indirim1"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -68,7 +68,7 @@ const DiscUpClient = (props) => {
               label="İndirim 2 %Yüzde*"
               name="indirim2"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />
@@ -78,7 +78,7 @@ const DiscUpClient = (props) => {
               label="İndirim 3 %Yüzde*"
               name="indirim3"
               type="text"
-              inputClasses="h-[50px]"
+              inputClasses="!h-[50px]"
               errors={errors}
               register={register}
             />

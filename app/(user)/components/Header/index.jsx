@@ -60,6 +60,15 @@ export default function Header({ className, drawerAction, user, category }) {
                 </span>
               </Link>
             </div>
+            {user !== null && user.Role === "ADMIN" && (
+              <div>
+                <Link href={"/admin"}>
+                  <span>
+                    <MdAdminPanelSettings color="white" size={26} />
+                  </span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
