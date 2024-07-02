@@ -37,8 +37,6 @@ function generateAuthorizationString(url, data) {
   };
 }
 
-export const orderbillRequest = new Map(); // Bu örnek için basit bir in-memory store kullanıyoruz
-
 async function reduceBasket(basket) {
   const updatePromises = basket.map((item) =>
     prisma.product.update({
@@ -105,10 +103,10 @@ export async function POST(req, res) {
     });
 
     reduceBasket(order.basket);
+    const uutoken = uuidv4();
     const user = {
       name: order.name,
       surname: order.surname,
-      email: order.email,
       identityNumber: order.identityNumber,
       tel: order.tel,
     };
@@ -119,6 +117,7 @@ export async function POST(req, res) {
         paymentId: response.paymentId,
         userId: order.userId !== null ? order.userId : null,
         userinfo: user,
+        email: order.email,
         billadress: order.billadress,
         sendadress: order.sendadress,
         basketId: response.basketId,
@@ -129,18 +128,14 @@ export async function POST(req, res) {
         status: "SUCCESS",
         paymentStatus: response.paymentStatus,
         error: "null",
+        token: uutoken,
       },
     });
 
-    const paymentID = payment.id;
-    const token = uuidv4();
-
-    orderbillRequest.set(token, { id: paymentID, createdAt: Date.now() });
-
     const MYURL =
       process.env.NODE_ENV === "development"
-        ? `http://localhost:3000/odeme-son?token=${token}`
-        : `https://bicakciserkan.com/odeme-son?token=${token}`;
+        ? `http://localhost:3000/odeme-son?token=${uutoken}`
+        : `https://bicakciserkan.com/odeme-son?token=${uutoken}`;
     const destinationUrl = new URL(MYURL);
 
     const nodemailer = await import("nodemailer");

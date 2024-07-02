@@ -75,16 +75,6 @@ export default function Banner({ className, settings, allcategory }) {
               </div>
             </div>
           </div>
-          <div className="w-full h-full flex items-center justify-center mb-6">
-            <div
-              className="px-4 py-2 bg-gray-50 shadow rounded"
-              data-aos="fade-top"
-            >
-              <h1 className="text-2xl font-bold text-[#ffee00] text-center text-shadow-xl">
-                Bıçakcı Serkan Av ve Bıçak Hediyelik Kullanımlık Ürünler
-              </h1>
-            </div>
-          </div>
         </div>
       </div>
     </>

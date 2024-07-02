@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ImBoxAdd } from "react-icons/im";
 const SiparisDetayClient = (props) => {
   const { siparis } = props;
@@ -103,7 +104,7 @@ const SiparisDetayClient = (props) => {
             </ul>
           </div>
         </div>
-        <div className="col-sm-12 col-md-12 col-lg-12 col-12  mb-3">
+        <div className="col-sm-12 col-md-12 col-lg-12 col-12">
           <h4 className="font-semibold">Sepet Detayı</h4>
           <div className="flex flex-col max-w-[510px] bg-slate-50 p-4  whitespace-nowrap">
             {siparis?.basket?.map((item) => {
@@ -124,6 +125,13 @@ const SiparisDetayClient = (props) => {
               );
             })}
           </div>
+        </div>
+        <div className="w-full flex items-center justify-start">
+          <Link href={`/order-bill/${siparis?.token}`}>
+            <button className="yellow-btn min-h-12 px-3 text-center w-24 mt-[30px] font-bold text-black border-[1px] border-black">
+              Faturayı Gör
+            </button>
+          </Link>
         </div>
       </div>
     </>

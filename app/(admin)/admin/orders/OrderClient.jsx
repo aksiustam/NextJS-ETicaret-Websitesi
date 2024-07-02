@@ -19,7 +19,7 @@ import {
   DEFAULT_OPTIONS,
   getTheme,
 } from "@table-library/react-table-library/material-ui";
-import { FaArrowRight, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./tablecss.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

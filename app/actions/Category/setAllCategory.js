@@ -6,8 +6,6 @@ export default async function setAllCategory(role, data) {
   try {
     const catbrand = role;
 
-    console.log(data);
-
     const CharacterMap = {
       Ç: "C",
       Ş: "S",

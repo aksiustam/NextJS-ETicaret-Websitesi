@@ -31,7 +31,7 @@ function OdemeFaturaClient(props) {
         <div className="flex flex-col lg:flex-row w-full">
           <div className="mb-3 flex justify-between lg:hidden flex-1 flex-wrap">
             <button
-              className="yellow-btn lg:!min-h-6 text-center ml-3 !h-12 !w-28 mt-[30px] font-bold text-black border-[1px] border-black"
+              className="yellow-btn !block lg:!hidden lg:!min-h-6 text-center ml-3 !h-12 !w-28 mt-[30px] font-bold text-black border-[1px] border-black"
               onClick={() => router.push("/")}
             >
               Geri Dön
@@ -45,7 +45,7 @@ function OdemeFaturaClient(props) {
             />
           </div>
           <button
-            className="yellow-btn hidden lg:block text-center !h-12 !w-28 ml-auto mr-4 mt-[30px] font-bold text-black border-[1px] border-black"
+            className="yellow-btn !hidden lg:!block text-center !h-12 !w-28 ml-auto mr-4 mt-[30px] font-bold text-black border-[1px] border-black"
             onClick={() => router.push("/")}
           >
             Geri Dön

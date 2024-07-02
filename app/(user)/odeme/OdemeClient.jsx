@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import iyzcopng from "@/public/assets/images/iyzico_ile_ode_colored_horizontal.png";
+import iyzcopng from "@/public/assets/images/iyzico_ile_ode_colored.png";
 import UseCart from "@/hooks/useCart";
 import Image from "next/image";
 import BreadcrumbCom from "../components/Common/BreadcrumbCom";
@@ -145,7 +145,7 @@ const OdemeClient = (props) => {
                     </div>
 
                     <div className="mt-[30px]">
-                      <div className=" flex justify-between mb-5">
+                      <div className=" flex justify-between mb-3">
                         <p className="text-2xl font-medium text-qblack">
                           Toplam
                         </p>
@@ -153,6 +153,15 @@ const OdemeClient = (props) => {
                           {cartTotal()}₺
                         </p>
                       </div>
+                    </div>
+                    <div className="mb-[10px]">
+                      <Image
+                        src={iyzcopng}
+                        alt="İyzico Öde"
+                        width={1200}
+                        height={1200}
+                        className="w-32 h-32 object-contain"
+                      />
                     </div>
                   </div>
                 </div>

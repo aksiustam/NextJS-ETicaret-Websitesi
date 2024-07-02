@@ -4,7 +4,6 @@ import Layout from "./components/Layout/Layout";
 import { getCurrentUser } from "../actions/getCurrentUser";
 
 import getAllCategory from "../actions/Category/getAllCategory";
-import Script from "next/script";
 import CartProvider from "@/provider/CartProvider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -59,7 +58,7 @@ export const metadata = {
     siteName: "Bıçakcı Serkan",
     images: [
       {
-        url: "https://bicakciserkan.com/assets/images/bicakcilogo.svg",
+        url: "https://res.cloudinary.com/dslul2smn/image/upload/v1719904402/bicakciserkan/set/kbwe7lw5jiegrjgzbfpx.png",
         width: 736,
         height: 250,
         alt: "Bıçakcı Serkan",
@@ -76,10 +75,6 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="tr">
-      <Script
-        type="text/javascript"
-        src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"
-      ></Script>
       <body className={inter.className}>
         <CartProvider>
           <Layout user={user} category={category}>

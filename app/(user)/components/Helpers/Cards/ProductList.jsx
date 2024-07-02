@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import errimg from "@/public/assets/images/errorproduct.webp";
 export default function ProductList({ className, datas }) {
-  console.log(datas);
   return (
     <div
       data-aos="fade-up"
