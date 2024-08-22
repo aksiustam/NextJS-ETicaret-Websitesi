@@ -404,7 +404,7 @@ const DiscProductsClient = (props) => {
                           router.push(`/admin/product/${item?.id}`)
                         }
                       >
-                        <Link href={`/admin/product/${item.id}`}>
+                        <Link href={`/admin/product/${item?.id}`}>
                           <Image
                             src={item?.images[0]?.imageurl}
                             alt="image"
@@ -421,7 +421,7 @@ const DiscProductsClient = (props) => {
                           router.push(`/admin/product/${item?.id}`)
                         }
                       >
-                        <Link href={`/admin/product/${item.id}`}>
+                        <Link href={`/admin/product/${item?.id}`}>
                           {item?.name}
                         </Link>
                       </Cell>

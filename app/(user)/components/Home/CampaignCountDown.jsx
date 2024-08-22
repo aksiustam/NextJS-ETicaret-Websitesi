@@ -71,9 +71,9 @@ export default function CampaignCountDown({ className, settings }) {
                       {data?.bannerAlt}
                     </p>
                   </div>
-                  <div className="w-[119px] h-10">
+                  <div className="w-[155px] h-10">
                     <div className="yellow-btn inline-flex space-x-2 items-center">
-                      <span className="text-sm font-600 tracking-wide leading-7">
+                      <span className="text-sm font-600 text-nowrap tracking-wide leading-7">
                         {data?.buttonName}
                       </span>
                       <span>

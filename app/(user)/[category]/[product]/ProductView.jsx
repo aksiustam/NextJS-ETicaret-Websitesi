@@ -4,6 +4,7 @@ import UseCart from "@/hooks/useCart";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import "react-quill/dist/quill.snow.css";
+import errimg from "@/public/assets/images/errorproduct.webp";
 export default function ProductView({ className, product }) {
   const [src, setSrc] = useState(product?.images[0]?.imageurl);
 
@@ -62,7 +63,7 @@ export default function ProductView({ className, product }) {
         <div className="w-full">
           <div className="w-full h-[600px] border border-qgray-border flex justify-center items-center overflow-hidden relative mb-3">
             <Image
-              src={src}
+              src={src || errimg}
               alt={product?.name}
               width={1200}
               height={1200}

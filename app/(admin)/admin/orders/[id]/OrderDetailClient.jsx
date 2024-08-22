@@ -72,7 +72,7 @@ const OrderDetailClient = (props) => {
                 Soyadı : <span>{data?.userinfo?.surname}</span>
               </li>
               <li>
-                Email : <span>{data?.userinfo?.email}</span>
+                Email : <span>{data?.email}</span>
               </li>
               <li>
                 Telefon : <span>{data?.userinfo?.tel}</span>

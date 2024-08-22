@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import Image from "next/image";
 import UseCart from "@/hooks/useCart";
 import ThinPeople from "../Helpers/icons/ThinPeople";
+import { MdAdminPanelSettings } from "react-icons/md";
 export default function Header({ className, drawerAction, user, category }) {
   const { basket } = UseCart();
   return (

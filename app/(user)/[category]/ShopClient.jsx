@@ -133,13 +133,15 @@ export default function ShopClient({ allcategory, data, products }) {
                             : ""
                         } `}
                       >
-                        <Image
-                          src={item?.imageurl}
-                          alt="Kategoriler"
-                          fill
-                          loading="eager"
-                          className={`w-full h-full rounded-full object-contain `}
-                        />
+                        {item?.imageurl != null && (
+                          <Image
+                            src={item?.imageurl}
+                            alt="Kategoriler"
+                            fill
+                            loading="eager"
+                            className={`w-full h-full rounded-full object-contain `}
+                          />
+                        )}
                       </div>
                       <h2 className="text-xs truncate pt-1">{item?.name}</h2>
                     </div>
@@ -260,21 +262,6 @@ export default function ShopClient({ allcategory, data, products }) {
                       <option value="ZA">Adına Göre (Z-A) </option>
                       <option value="new">Yeni Ürünler</option>
                     </select>
-
-                    {/* <span className="font-400 text-[13px] text-qgray">
-                      Varsayılan
-                    </span>
-                    <span>
-                      <svg
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M1 1L5 5L9 1" stroke="#9A9A9A" />
-                      </svg>
-                    </span> */}
                   </div>
                 </div>
                 <button

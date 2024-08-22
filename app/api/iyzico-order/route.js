@@ -3,8 +3,8 @@ import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import Invoicemail from "@/app/email/Invoicemail";
-const apiKey = process.env.SAND_API_KEY;
-const secretKey = process.env.SAND_API_SECRET;
+const apiKey = process.env.API_KEY;
+const secretKey = process.env.API_SECRET;
 
 function generateAuthorizationString(url, data) {
   const randomVar = 959770701;
@@ -71,7 +71,7 @@ export async function POST(req, res) {
   };
 
   const url =
-    "https://sandbox-api.iyzipay.com/payment/iyzipos/checkoutform/auth/ecom/detail";
+    "https://api.iyzipay.com/payment/iyzipos/checkoutform/auth/ecom/detail";
 
   var authres = generateAuthorizationString(url, formData);
 

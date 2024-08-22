@@ -56,7 +56,8 @@ export default async function putAllCategory(role, data) {
             },
           });
 
-          await cloudinary.uploader.destroy(category.imageid);
+          if (category.imageid !== null)
+            await cloudinary.uploader.destroy(category.imageid);
 
           await prisma.category.update({
             where: { id: data.id },
@@ -94,8 +95,8 @@ export default async function putAllCategory(role, data) {
               id: data.id,
             },
           });
-
-          await cloudinary.uploader.destroy(subcategory.imageid);
+          if (subcategory.imageid !== null)
+            await cloudinary.uploader.destroy(subcategory.imageid);
 
           await prisma.SubCategory.update({
             where: { id: data.id },

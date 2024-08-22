@@ -2,8 +2,8 @@
 import prisma from "@/lib/prismadb";
 import crypto from "crypto";
 import { headers } from "next/headers";
-const apiKey = process.env.SAND_API_KEY;
-const secretKey = process.env.SAND_API_SECRET;
+const apiKey = process.env.API_KEY;
+const secretKey = process.env.API_SECRET;
 
 function generateAuthorizationString(url, data) {
   const randomVar = 959770701;
@@ -35,6 +35,7 @@ function generateAuthorizationString(url, data) {
     randomkey: randomKey,
   };
 }
+
 export default async function createOrder(user, userInfo, basket) {
   try {
     const total = basket.reduce((acc, item) => {
@@ -46,6 +47,21 @@ export default async function createOrder(user, userInfo, basket) {
     }, 0);
 
     const userip = headers().get("x-forwarded-for");
+
+    for (const item of basket) {
+      const product = await prisma.product.findUnique({
+        where: { id: parseInt(item.id) },
+        include: { Category: true, SubCategory: true },
+      });
+
+      if (!product) {
+        return "Sepetteki Ürün bulunmamaktadır.";
+      }
+
+      if (product.stock <= 0 || product.stock < item.quantity) {
+        return "Sepetteki Ürün Stocklarda Kalmadı.";
+      }
+    }
 
     const basketItems = [];
     basket.forEach((item) => {
@@ -111,7 +127,7 @@ export default async function createOrder(user, userInfo, basket) {
     };
     // https://webhook.site/4ed223d3-010a-40a6-bd6d-4e0c9fa0f9c7
     const url =
-      "https://sandbox-api.iyzipay.com/payment/iyzipos/checkoutform/initialize/auth/ecom";
+      "https://api.iyzipay.com/payment/iyzipos/checkoutform/initialize/auth/ecom";
 
     var authres = generateAuthorizationString(url, formData);
 

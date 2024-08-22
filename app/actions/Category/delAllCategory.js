@@ -14,14 +14,16 @@ export default async function delAllCategory(role, data) {
 
     switch (catbrand) {
       case "category":
-        await cloudinary.uploader.destroy(data.imageid);
+        if (data.imageid != null)
+          await cloudinary.uploader.destroy(data.imageid);
         await prisma.category.delete({
           where: { id: data.id },
         });
 
         break;
       case "subcat":
-        await cloudinary.uploader.destroy(data.imageid);
+        if (data.imageid != null)
+          await cloudinary.uploader.destroy(data.imageid);
         await prisma.SubCategory.delete({
           where: { id: data.id },
         });

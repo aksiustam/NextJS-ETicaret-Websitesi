@@ -9,17 +9,22 @@ import React, {
 } from "react";
 
 const CartContext = createContext(null);
-
+import upSepetProduct from "@/app/actions/Products/upSepetProduct";
 export const CartContextProvider = (props) => {
   const [basket, setBasket] = useState([]);
 
   useEffect(() => {
-    let getItem = localStorage.getItem("cart");
-    let getItemParse = JSON.parse(getItem) || [];
-    if (getItemParse) {
-      localStorage.setItem("cart", JSON.stringify(getItemParse));
-      setBasket(getItemParse);
-    }
+    const fetchAndUpdateCart = async () => {
+      let getItem = localStorage.getItem("cart");
+      let getItemParse = JSON.parse(getItem) || [];
+      if (getItemParse.length > 0) {
+        const res = await upSepetProduct(getItemParse);
+        localStorage.setItem("cart", JSON.stringify(res));
+        setBasket(res);
+      }
+    };
+
+    fetchAndUpdateCart();
   }, []);
 
   const addToBasket = useCallback(

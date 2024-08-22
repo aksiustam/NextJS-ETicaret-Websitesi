@@ -36,6 +36,9 @@ const Payment = (props) => {
               document.head.appendChild(script);
             }
           }
+        } else {
+          setMessage(res);
+          return;
         }
       } catch (error) {
         setMessage(error);
@@ -64,12 +67,10 @@ const Payment = (props) => {
             {message && message}
           </div>
           {basket.length > 0 && (
-            <>
-              <div
-                id="iyzipay-checkout-form"
-                className="responsive w-full h-full"
-              ></div>
-            </>
+            <div
+              id="iyzipay-checkout-form"
+              className="responsive w-full h-full"
+            ></div>
           )}
         </div>
       </div>
