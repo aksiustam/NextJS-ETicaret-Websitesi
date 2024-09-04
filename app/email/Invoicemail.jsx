@@ -564,7 +564,7 @@ const Invoicemail = ({ sipdata }) => {
                 </td>
               </tr>
               <tr>
-                <td>Vergi No :1261268423</td>
+                <td>Vergi No :8080242229</td>
               </tr>
             </tbody>
           </table>

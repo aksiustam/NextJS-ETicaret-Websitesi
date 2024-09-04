@@ -1,5 +1,4 @@
 "use client";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { CldUploadWidget } from "next-cloudinary";

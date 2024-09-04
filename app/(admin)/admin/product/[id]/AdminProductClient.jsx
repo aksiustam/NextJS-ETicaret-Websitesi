@@ -222,8 +222,8 @@ const AdminProductClient = (props) => {
           </div>
         </div>
         <div className="flex mb-4 space-x-5">
-          {product?.images?.map((item) => (
-            <div key={item?.id} className="w-32 h-32">
+          {product?.images?.map((item, index) => (
+            <div key={index} className="w-32 h-32">
               <Image
                 src={item?.imageurl}
                 alt="Product image"

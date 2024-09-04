@@ -31,8 +31,8 @@ const ProfilLayout = ({ children }) => {
                 Profil Hesabım
               </h1>
             </div>
-            <div className="profile-wrapper w-full mt-8 space-x-10 hidden md:flex">
-              <div className="w-[236px] min-h-[600px] border-r border-[rgba(0, 0, 0, 0.1)]">
+            <div className="profile-wrapper w-full mt-8 space-x-10 flex flex-col md:flex-row">
+              <div className="w-[236px] min-h-[600px] border-r border-[rgba(0, 0, 0, 0.1)]  hidden md:block ">
                 <div className="flex flex-col space-y-10">
                   <div className="item group">
                     <Link href="/hesabim">
@@ -99,14 +99,7 @@ const ProfilLayout = ({ children }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex-1">
-                <div className="item-body dashboard-wrapper w-full">
-                  {children}
-                </div>
-              </div>
-            </div>
-            <div className="profile-wrapper w-full mt-8 flex flex-col md:hidden">
-              <div className="w-full min-h-[50px] border-b border-[rgba(0, 0, 0, 0.1)]">
+              <div className="w-full min-h-[50px] border-b border-[rgba(0, 0, 0, 0.1)] block md:hidden">
                 <div className="flex space-x-8">
                   <div className="item group">
                     <Link href="/hesabim">
@@ -160,7 +153,7 @@ const ProfilLayout = ({ children }) => {
                   </div>
                 </div>
               </div>
-              <div className="w-full flex justify-start">
+              <div className="flex-1">
                 <div className="item-body dashboard-wrapper w-full">
                   {children}
                 </div>
