@@ -1,20 +1,19 @@
-E-Commerce Website I Developed for Bıçakcı Serkan: [www.bicakciserkan.com](https://bicakciserkan.com/) 
+# E-Commerce Website for Bıçakcı Serkan
 
-The website features:
-  User registration with email verification upon entry.
-  Admin panel with functionalities for:
-  Custom banner image updates.
-  Category management.
-  Product uploads, edits, and pricing/discount/campaign adjustments.
+## Website: [www.bicakciserkan.com](https://www.bicakciserkan.com)
 
-Integrations:
-  Cloudinary for seamless image uploads.
-  İyzico for secure credit card payments (fully functional).
+### Features:
+- User registration with a valid email verification system.
+- Admin panel with functionalities to:
+  - Change special banner images.
+  - Manage categories.
+  - Upload, edit, and update products, including pricing, discounts, and campaigns.
+- **Cloudinary** is used for image upload integration.
+- **Iyzico** is integrated for seamless credit card payments.
+- Since this is a **Next.js** application, the `.env` file is encrypted to protect sensitive data.
 
-Technical Notes:
-  Built with NextJS; sensitive data in the .env file is encrypted.
-
-Visit to explore: [www.bicakciserkan.com](https://bicakciserkan.com/) 
+### Live Preview:
+[www.bicakciserkan.com](https://www.bicakciserkan.com)
 
 
 Bıçakcı Serkan için yaptığım E-Ticaret Websitesi :  [www.bicakciserkan.com](https://bicakciserkan.com/) 
